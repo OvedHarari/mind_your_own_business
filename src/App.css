@@ -1,38 +1,78 @@
+:root {
+  --color-primary: #d6d6d6;
+  /* --color-primary: #ffffff; */
+  /* --color-primary: #191d2b; */
+  --color-secondary: #157347;
+  --color-title: #212529;
+  --color-white: #ffffff;
+  --color-black: #000;
+  --color-grey0: #f8f8f8;
+  --color-grey-1: #dbe1e8;
+  --color-grey-2: #b2becd;
+  --color-grey-3: #6c7983;
+  --color-grey-4: #454e56;
+  --color-grey-5: #2a2e35;
+  --color-grey-6: #12181b;
+  --box-shadow-1: 0 3px 15px rgba(0, 0, 0, 0.3);
+  --box-shadow-2: 0 2px 5px rgba(248, 248, 248, 0.2);
+}
+.dark {
+  --color-primary: #212529;
+  /* --color-primary: #191d2b; */
+  --color-secondary: #254f79;
+  --color-title: #a5aaaf;
+
+  --color-white: #a5aaaf;
+  --color-black: #000;
+  --color-grey0: #f8f8f8;
+  --color-grey-1: #6c7983;
+  --color-grey-2: #6c7983;
+  --color-grey-3: #6c7983;
+  --color-grey-4: #454e56;
+  --color-grey-5: #f8f8f8;
+  --color-grey-6: #12181b;
+
+  --br-sm-2: 14px;
+  --box-shadow-1: 0 3px 15px rgba(0, 0, 0, 0.3);
+  --box-shadow-2: 0 2px 5px rgba(248, 248, 248, 0.2);
+}
+
+/* .home {
+  background-color: var(--color-primary);
+
+} */
+
 .App {
   text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-title);
+  height: 100%;
+}
+/* .bCard {
+  text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-title);
+  height: 100vh;
+} */
+
+/* 
+.App {
+  text-align: center;
+} */
+
+.search-bar {
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search-bar input[type="text"] {
+  padding-right: 30px;
+  /* Space for the magnifying glass icon */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-bar .search-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
