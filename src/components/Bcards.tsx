@@ -6,7 +6,7 @@ import { getCards } from "../services/cardService";
 import NewCardModal from "./NewCardModal";
 import DeleteCardModal from "./DeleteCardModal";
 import UpdateCardModal from "./UpdateCardModal";
-import { addToFavorites, getFavorites, removeFromFavorites } from "../services/favoritsService";
+import { addToFavorites, getFavorites, removeFromFavorites } from "../services/favoritesService";
 import { successMsg } from "../services/feedbacksService";
 // import Favorite from "../interfaces/Favorite";
 
@@ -28,29 +28,25 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
   let render = () => setDataUpdated(!dataUpdated);
   let handleAddToFavorites = (card: Card) => {
     if (favorites.includes(card.id as number)) {
-      // Card is already in favorites, so remove it
-      removeFromFavorites(userInfo.userId, card.id as number)
+       removeFromFavorites(userInfo.userId, card.id as number)
         .then((res) => {
           setFavorites(favorites.filter((id) => id !== card.id));
-          successMsg('Card removed from favorites!');})
+          successMsg(`${card.title } business card was removed from favorites!`);})
         .catch((err) => {console.log(err);});
     } else {
       addToFavorites(userInfo.userId, card)
         .then((res) => {
           setFavorites([...favorites, card.id as number]);            
-          successMsg('Card added to favorites!');})
+          successMsg(`${card.title} business card was added to favorites!`);})
         .catch((err) => {console.log(err);});   
 }};
-
   useEffect(() => {
     getFavorites(userInfo.userId).then((res)=>{ 
-      setFavorites(res.data)
-    
-    }).catch((err)=>console.log(err))
+        let userFavorites = res.data.find((fav:any) => fav.userId === userInfo.userId);
+        let defaultCardIds: number[] = userFavorites?.cards.map((card:any) => card.id) || [];
+      setFavorites(defaultCardIds) }).catch((err)=>console.log(err))
     getCards().then((res) => SetCards(res.data)).catch((err) => console.log(err));
   }, [dataUpdated,userInfo.userId]);
-
-
 
   return (
     <div className={`container mt-3 bCard ${theme}`}>
@@ -99,7 +95,7 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
                     <p className="card-text">{card.description}</p>
                     
                   {/* <div className="position-absolute bottom-0"> */}
-                    <div className="row">
+                    <div className=" row">
                       {(userInfo.email === card.owner ||
                         userInfo.role === "admin") && (
                         <div className="col-6 ">
@@ -127,6 +123,7 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
                           </Link>
                         </div>
                       )}
+                      {/* <div className="position-absolut bottom-0 end-0"> */}
                     <div className="col-6 ">
                         <Link
                           to={`tel:${card.phone}`}
@@ -145,6 +142,7 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
                               </Link>  )
                               )}
                          </div>
+                         {/* </div> */}
                     </div>
                     {/* </div> */}
                   </div>

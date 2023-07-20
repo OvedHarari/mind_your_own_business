@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { addUser } from "../services/usersService";
 import { successMsg } from "../services/feedbacksService";
 import User from "../interfaces/User";
-import { createFavoritsById } from "../services/favoritsService";
+import { createFavoritsById } from "../services/favoritesService";
 
 interface SignUpProps {
   setUserInfo: Function;

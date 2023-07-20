@@ -63,7 +63,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
               {userInfo.email  && (
                 <>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/favorit">
+                    <NavLink className="nav-link" to="/favorites">
                       Fav Cards
                     </NavLink>
                   </li>
