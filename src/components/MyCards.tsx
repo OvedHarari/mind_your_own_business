@@ -59,7 +59,7 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ setUserInfo, userInfo }) => 
                 //  {userInfo.email === card.owner  && (
                 <div
                   key={card.id}
-                  className="card col-md-4 mx-2 mt-3 shadow"
+                  className="card col-md-4 mx-3 mt-4 shadow"
                   style={{ width: "18rem" }}
                 >
                   <img
@@ -73,23 +73,15 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ setUserInfo, userInfo }) => 
                       {card.title}
                     </h6>
                     <h5 className="card-title">{card.subtitle}</h5>
-                    <p className="card-text">{card.description}</p>
-                    {/* <p className="card-text text-success">{card.price} ₪</p> */}
-                    {/* <Link
-                      to="#"
-                      className="btn btn-primary"
-                      // onClick={() => handleAddToCart(card)}
-                    >
-                      <i className="fa-solid fa-cart-shopping"></i> Add to Cart
-                    </Link> */}
-                    <div className="position-absolute bottom-0">
-                    <div className="row ">
+                    <p className="card-text mb-4">{card.description}</p>
+                    <div className="cardIcons">
+                      <div className="row ">
                       {(userInfo.email === card.owner ||
                         userInfo.role === "admin") && (
-                        <div className="col-6 ">
+                        <div className="col left-icons text-start">
                           <Link
                             to=""
-                            className="btn col-3"
+                            className="btn col"
                             onClick={() => {
                               setCardId(card.id as number);
                               setCardTitle(card.title);
@@ -100,7 +92,7 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ setUserInfo, userInfo }) => 
                           </Link>
                           <Link
                             to=""
-                            className="btn mx-2 col-3"
+                            className="btn col"
                             onClick={() => {
                               setCardId(card.id as number);
                               setCardTitle(card.title);
@@ -113,10 +105,10 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ setUserInfo, userInfo }) => 
                       )}
                       
 
-                      <div className="col-6 ">
+                      <div className="col right-icons text-end">
                         <Link
                           to=""
-                          className="btn mx-2 col-3"
+                          className="btn col"
                           onClick={() => {
                             // setCardId(card.id as number);
                             // setCardTitle(card.title);
@@ -128,7 +120,7 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ setUserInfo, userInfo }) => 
                         {userInfo.email && (
                           <Link
                               to=""
-                              className="btn mx-2 col-3"
+                              className="btn col"
                               onClick={() => {
                                 // setCardId(card.id as number);
                                 // setCardTitle(card.title);
@@ -139,8 +131,9 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ setUserInfo, userInfo }) => 
                             </Link>
                         )}
                       </div>
+                    </div>                  
                     </div>
-                    </div>
+
                   </div>
                 </div>
               

@@ -1,6 +1,7 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { Modal } from "react-bootstrap";
 import NewCard from "./NewCard";
+import { SiteTheme } from "../App";
 
 interface NewCardModalProps {
   show: boolean;
@@ -11,11 +12,14 @@ interface NewCardModalProps {
 }
  
 const NewCardModal: FunctionComponent<NewCardModalProps> = ({ show,onHide, render,userInfo}) => {
+  let theme = useContext(SiteTheme);
+
     return ( <div
-      className="modal show"
+      className={`modal show `}
       style={{ display: "block", position: "initial" }}
     >
-      <Modal
+      <Modal  
+      className={`${theme} set-modal`}            
         show={show}
         onHide={() => onHide()}
         backdrop="static"
@@ -24,8 +28,8 @@ const NewCardModal: FunctionComponent<NewCardModalProps> = ({ show,onHide, rende
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title className="display-3">New Business Card</Modal.Title>
+        <Modal.Header closeButton >
+          <Modal.Title className="display-3" >New Business Card</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>

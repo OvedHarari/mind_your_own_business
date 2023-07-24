@@ -1,8 +1,10 @@
 :root {
-  --color-primary: #d6d6d6;
+  --color-primary: #ededed;
+  /* --color-primary: #d6d6d6; */
   /* --color-primary: #ffffff; */
   /* --color-primary: #191d2b; */
-  --color-secondary: #157347;
+  --color-secondary: #c2caca88;
+  /* --color-secondary: #157347; */
   --color-title: #212529;
   --color-white: #ffffff;
   --color-black: #000;
@@ -19,8 +21,10 @@
 .dark {
   --color-primary: #212529;
   /* --color-primary: #191d2b; */
-  --color-secondary: #254f79;
-  --color-title: #a5aaaf;
+  --color-secondary: #586573;
+  /* --color-secondary: #254f79; */
+  --color-title: #b2b5b9;
+  /* --color-title: #a5aaaf; */
 
   --color-white: #a5aaaf;
   --color-black: #000;
@@ -47,13 +51,37 @@
   background-color: var(--color-primary);
   color: var(--color-title);
   height: 100%;
+  min-height: 100vh;
+  padding-bottom: 3rem;
+
 }
-/* .bCard {
-  text-align: center;
+
+.set-modal .modal-content {
+ background-color: var(--color-primary) ;
+ color: var(--color-title);
+   .form-control{
   background-color: var(--color-primary);
+    color: var(--color-title);
+         }
+
+}
+
+.card {
+  background-color: var(--color-secondary);
   color: var(--color-title);
-  height: 100vh;
+}
+
+.cardIcons{
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+ 
+}
+
+ /* .dark {
+ background-color: var(--color-primary) 
 } */
+
 
 /* 
 .App {

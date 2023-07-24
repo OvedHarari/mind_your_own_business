@@ -1,9 +1,9 @@
 import { FunctionComponent, useContext } from "react";
 import { Modal } from "react-bootstrap";
-import UpdateCard from "./UpdateCard";
 import { SiteTheme } from "../App";
+import BusinessDetails from "./BusinessDetails";
 
-interface UpdateCardModalProps {
+interface BusinessDetailsModalProps {
   show: boolean;
   onHide: Function;
   render: Function;
@@ -13,7 +13,7 @@ interface UpdateCardModalProps {
     
 }
  
-const UpdateCardModal: FunctionComponent<UpdateCardModalProps> = ({ show,onHide, render,userInfo,cardId,cardTitle}) => {
+const BusinessDetailsModal: FunctionComponent<BusinessDetailsModalProps> = ({ show,onHide, render,userInfo,cardId,cardTitle}) => {
   let theme = useContext(SiteTheme);
     return ( <div
       className="modal show"
@@ -23,21 +23,20 @@ const UpdateCardModal: FunctionComponent<UpdateCardModalProps> = ({ show,onHide,
       className={`${theme} set-modal`} 
         show={show}
         onHide={() => onHide()}
-        backdrop="static"
+        // backdrop="static"
         keyboard={false}
-        size="lg"
+        size="xl"
         aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
+        centered  >
         <Modal.Header closeButton>
-          <Modal.Title className="display-3">{`Update ${cardTitle} Card`}</Modal.Title>
+          <Modal.Title className="display-3">{`More About: ${cardTitle}`}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <UpdateCard onHide={onHide} render={render} userInfo={userInfo} cardId={cardId} cardTitle={cardTitle}/>
+          <BusinessDetails onHide={onHide} render={render} userInfo={userInfo} cardId={cardId} cardTitle={cardTitle}/>
         </Modal.Body>
       </Modal>
     </div> );
 }
  
-export default UpdateCardModal;
+export default BusinessDetailsModal;

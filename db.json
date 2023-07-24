@@ -137,8 +137,6 @@
   ],
   "cards": [
     {
-      "id": 1,
-      "owner": "business1@test.com",
       "title": "Doe's Cafe",
       "subtitle": "A cozy place for coffee lovers",
       "description": "Doe's Cafe offers a warm and inviting atmosphere for coffee enthusiasts. We serve a variety of specialty coffee blends and delicious pastries.",
@@ -150,9 +148,12 @@
       "country": "United States",
       "state": "California",
       "city": "Los Angeles",
-      "street": "123 Main Street",
-      "housNamber": "Suite 101",
-      "zipcode": "90001"
+      "street": "Main Street",
+      "houseNumber": "123 ",
+      "zipcode": "90001",
+      "owner": "business1@test.com",
+      "isFavorite": false,
+      "id": 1
     },
     {
       "id": 2,
@@ -355,25 +356,6 @@
           "isFavorite": false
         },
         {
-          "id": 1,
-          "owner": "business1@test.com",
-          "title": "Doe's Cafe",
-          "subtitle": "A cozy place for coffee lovers",
-          "description": "Doe's Cafe offers a warm and inviting atmosphere for coffee enthusiasts. We serve a variety of specialty coffee blends and delicious pastries.",
-          "phone": "+1 (555) 123-4567",
-          "email": "info@doescafe.com",
-          "webSite": "https://www.doescafe.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
-          "businessImgAlt": "Doe's Cafe",
-          "country": "United States",
-          "state": "California",
-          "city": "Los Angeles",
-          "street": "123 Main Street",
-          "housNamber": "Suite 101",
-          "zipcode": "90001",
-          "isFavorite": false
-        },
-        {
           "id": 4,
           "owner": "business1@test.com",
           "title": "Nature's Bounty",
@@ -391,6 +373,24 @@
           "housNamber": "Shop 10",
           "zipcode": "M5V 2N8",
           "isFavorite": false
+        },
+        {
+          "id": 1,
+          "owner": "business1@test.com",
+          "title": "Doe's Cafe",
+          "subtitle": "A cozy place for coffee lovers",
+          "description": "Doe's Cafe offers a warm and inviting atmosphere for coffee enthusiasts. We serve a variety of specialty coffee blends and delicious pastries.",
+          "phone": "+1 (555) 123-4567",
+          "email": "info@doescafe.com",
+          "webSite": "https://www.doescafe.com",
+          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
+          "businessImgAlt": "Doe's Cafe",
+          "country": "United States",
+          "state": "California",
+          "city": "Los Angeles",
+          "street": "123 Main Street",
+          "housNamber": "Suite 101",
+          "zipcode": "90001"
         }
       ]
     },
@@ -418,41 +418,6 @@
           "isFavorite": false
         },
         {
-          "id": 2,
-          "owner": "business1@test.com",
-          "title": "Emily's Art Gallery",
-          "description": "Emily's Art Gallery showcases contemporary artworks from talented artists across the globe. We offer a diverse collection of paintings, sculptures, and other artistic creations.",
-          "phone": "+1 (555) 987-6543",
-          "email": "contact@emilysgallery.com",
-          "webSite": "https://www.emilysgallery.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
-          "businessImgAlt": "Emily's Art Gallery",
-          "country": "United States",
-          "state": "New York",
-          "city": "New York City",
-          "street": "456 Art Avenue",
-          "housNamber": "Floor 3",
-          "zipcode": "10001"
-        },
-        {
-          "id": 1,
-          "owner": "business1@test.com",
-          "title": "Doe's Cafe",
-          "subtitle": "A cozy place for coffee lovers",
-          "description": "Doe's Cafe offers a warm and inviting atmosphere for coffee enthusiasts. We serve a variety of specialty coffee blends and delicious pastries.",
-          "phone": "+1 (555) 123-4567",
-          "email": "info@doescafe.com",
-          "webSite": "https://www.doescafe.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
-          "businessImgAlt": "Doe's Cafe",
-          "country": "United States",
-          "state": "California",
-          "city": "Los Angeles",
-          "street": "123 Main Street",
-          "housNamber": "Suite 101",
-          "zipcode": "90001"
-        },
-        {
           "id": 4,
           "owner": "business1@test.com",
           "title": "Nature's Bounty",
@@ -469,6 +434,23 @@
           "street": "789 Green Avenue",
           "housNamber": "Shop 10",
           "zipcode": "M5V 2N8"
+        },
+        {
+          "id": 3,
+          "owner": "business1@test.com",
+          "title": "TechSmart Electronics",
+          "description": "TechSmart Electronics is your one-stop shop for the latest gadgets and tech accessories. We offer top-notch customer service and a wide range of cutting-edge products.",
+          "phone": "+1 (555) 789-0123",
+          "email": "support@techsmart.com",
+          "webSite": "https://www.techsmart.com",
+          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
+          "businessImgAlt": "TechSmart Electronics",
+          "country": "United States",
+          "state": "Texas",
+          "city": "Houston",
+          "street": "789 Tech Boulevard",
+          "housNamber": "Unit 5",
+          "zipcode": "77001"
         }
       ]
     },

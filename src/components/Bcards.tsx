@@ -8,6 +8,7 @@ import DeleteCardModal from "./DeleteCardModal";
 import UpdateCardModal from "./UpdateCardModal";
 import { addToFavorites, getFavorites, removeFromFavorites } from "../services/favoritesService";
 import { successMsg } from "../services/feedbacksService";
+import BusinessDetailsModal from "./BusinessDetailsModal";
 // import Favorite from "../interfaces/Favorite";
 
 interface BcardsProps {
@@ -21,6 +22,7 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
   let [openNewCardModal, setOpenNewCardModal] = useState<boolean>(false);
   let [openDeleteCardModal, setOpenDeleteCardModal] = useState<boolean>(false);
   let [openUpdateCardModal, setOpenUpdateCardModal] = useState<boolean>(false);
+  let [openBusinessDetailsModal, setOpenBusinessDetailsModal] = useState<boolean>(false);
   let [cardId, setCardId] = useState<number>(0);
   let [cardTitle, setCardTitle] = useState<string>("");
   let [dataUpdated, setDataUpdated] = useState<boolean>(false);
@@ -43,9 +45,12 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
   useEffect(() => {
     getFavorites(userInfo.userId).then((res)=>{ 
         let userFavorites = res.data.find((fav:any) => fav.userId === userInfo.userId);
+        console.log(userFavorites);
         let defaultCardIds: number[] = userFavorites?.cards.map((card:any) => card.id) || [];
+        console.log(defaultCardIds);
       setFavorites(defaultCardIds) }).catch((err)=>console.log(err))
     getCards().then((res) => SetCards(res.data)).catch((err) => console.log(err));
+    
   }, [dataUpdated,userInfo.userId]);
 
   return (
@@ -78,7 +83,7 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
               {cards.map((card: Card) => (
                 <div
                   key={card.id}
-                  className="card col-md-4 mx-2 mt-3 shadow"
+                  className="card col-md-4 mx-3 mt-4 shadow"
                   style={{ width: "18rem" }}
                 >
                   <img
@@ -86,22 +91,28 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
                     className="card-img-top mt-2"
                     alt={card.businessImgAlt}
                     style={{ width: "16.5rem", height: "16.5rem" }}
+                    onClick={() => {
+                              setCardId(card.id as number);
+                              setCardTitle(card.title);
+                              setOpenBusinessDetailsModal(true);
+                            }}
+
                   />
                   <div className="card-body">
                     <h6 className="card-subtitle mb-2 text-muted">
                       {card.title}
                     </h6>
                     <h5 className="card-title">{card.subtitle}</h5>
-                    <p className="card-text">{card.description}</p>
-                    
-                  {/* <div className="position-absolute bottom-0"> */}
-                    <div className=" row">
+                    <p className="card-text mb-4">{card.description}</p>
+                    <div className="cardIcons">
+                    <div className="row">
                       {(userInfo.email === card.owner ||
                         userInfo.role === "admin") && (
-                        <div className="col-6 ">
+
+                        <div className="col left-icons text-start">
                           <Link
                             to=""
-                            className="btn col-3"
+                            className="btn col"
                             onClick={() => {
                               setCardId(card.id as number);
                               setCardTitle(card.title);
@@ -112,7 +123,7 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
                           </Link>
                           <Link
                             to=""
-                            className="btn mx-2 col-3"
+                            className="btn col"
                             onClick={() => {
                               setCardId(card.id as number);
                               setCardTitle(card.title);
@@ -123,28 +134,29 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
                           </Link>
                         </div>
                       )}
-                      {/* <div className="position-absolut bottom-0 end-0"> */}
-                    <div className="col-6 ">
+                    
+                    <div className="col right-icons text-end">
                         <Link
                           to={`tel:${card.phone}`}
-                          className="btn mx-2 col-3"                          
+                          className="btn col"                          
                         >
                           <i className="fa-solid fa-phone"></i>
                         </Link>
                         {userInfo.email && ( favorites.includes(card.id as number) ? (
-                      <Link to="" className="btn mx-2 col-3 text-danger" onClick={() => {
+                      <Link to="" className="btn col text-danger" onClick={() => {
                      handleAddToFavorites(card);}}    >
                     <i className="fa-solid fa-heart"></i>
                     </Link>
                       ) : (
-                            <Link to="" className="btn mx-2 col-3" onClick={() => {        handleAddToFavorites(card);}}    >
+                            <Link to="" className="btn col" onClick={() => {handleAddToFavorites(card);}}    >
                               <i className="fa-solid fa-heart"></i>
                               </Link>  )
                               )}
                          </div>
-                         {/* </div> */}
+                      
                     </div>
-                    {/* </div> */}
+                 
+                    </div>
                   </div>
                 </div>
               ))}
@@ -154,7 +166,7 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
           <p>No cards</p>
         )}
         
-        <NewCardModal
+        <NewCardModal         
           show={openNewCardModal}
           onHide={() => setOpenNewCardModal(false)}
           render={render}
@@ -174,7 +186,14 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
           cardId={cardId}
           cardTitle={cardTitle}
            userInfo= {userInfo}
-
+        />
+        <BusinessDetailsModal
+          show={openBusinessDetailsModal}
+          onHide={() => setOpenBusinessDetailsModal(false)}
+          render={render}
+          cardId={cardId}
+          cardTitle={cardTitle}
+           userInfo= {userInfo}
         />
       
     </div>

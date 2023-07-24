@@ -16,6 +16,7 @@ let theme = {
   dark: "dark",
 };
 export let SiteTheme = createContext(theme.light);
+
 function App() {
   let [darkMode, setDarkMode] = useState<boolean>(
     JSON.parse(localStorage.getItem("darkMode")!)
@@ -29,7 +30,7 @@ function App() {
   return (
     <SiteTheme.Provider value={darkMode ? theme.dark : theme.light}>
       <ToastContainer theme={`${darkMode ? "dark" : "light"}`} />
-      <div className={`App  ${darkMode ? "dark" : "light"}`}>
+        <div className={`App  ${darkMode ? "dark" : "light"}`}>
         <Router>
           <Navbar
             userInfo={userInfo}

@@ -80,7 +80,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
               {cards.map((card: Card) => (
                 <div
                   key={card.id}
-                  className="card col-md-4 mx-2 mt-3 shadow"
+                  className="card col-md-4 mx-3 mt-4 shadow"
                   style={{ width: "18rem" }}
                 >
                   <img
@@ -94,16 +94,16 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
                       {card.title}
                     </h6>
                     <h5 className="card-title">{card.subtitle}</h5>
-                    <p className="card-text">{card.description}</p>
+                    <p className="card-text mb-4">{card.description}</p>
                     
-                  {/* <div className="position-absolute bottom-0"> */}
+                 <div className="cardIcons">
                     <div className=" row">
                       {(userInfo.email === card.owner ||
                         userInfo.role === "admin") && (
-                        <div className="col-6 ">
+                        <div className="col left-icons text-start">
                           <Link
                             to=""
-                            className="btn col-3"
+                            className="btn col"
                             onClick={() => {
                               setCardId(card.id as number);
                               setCardTitle(card.title);
@@ -114,7 +114,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
                           </Link>
                           <Link
                             to=""
-                            className="btn mx-2 col-3"
+                            className="btn col"
                             onClick={() => {
                               setCardId(card.id as number);
                               setCardTitle(card.title);
@@ -125,28 +125,26 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
                           </Link>
                         </div>
                       )}
-                      {/* <div className="position-absolut bottom-0 end-0"> */}
-                    <div className="col-6 ">
+                    <div className="col right-icons text-end">
                         <Link
                           to={`tel:${card.phone}`}
-                          className="btn mx-2 col-3"                          
+                          className="btn col"                          
                         >
                           <i className="fa-solid fa-phone"></i>
                         </Link>
                         {userInfo.email && ( favorites.includes(card.id as number) ? (
-                      <Link to="" className="btn mx-2 col-3 text-danger" onClick={() => {
+                      <Link to="" className="btn col text-danger" onClick={() => {
                      handleAddToFavorites(card);}}    >
                     <i className="fa-solid fa-heart"></i>
                     </Link>
                       ) : (
-                            <Link to="" className="btn mx-2 col-3" onClick={() => {        handleAddToFavorites(card);}}    >
+                            <Link to="" className="btn col" onClick={() => {        handleAddToFavorites(card);}}    >
                               <i className="fa-solid fa-heart"></i>
                               </Link>  )
                               )}
                          </div>
-                         {/* </div> */}
                     </div>
-                    {/* </div> */}
+                    </div>
                   </div>
                 </div>
               ))}

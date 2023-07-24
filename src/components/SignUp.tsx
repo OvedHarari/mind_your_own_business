@@ -13,7 +13,7 @@ interface SignUpProps {
 const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo }) => {
   let navigate = useNavigate();
   let formik = useFormik({
-    initialValues: {firstName: "",middleName: "",lastName: "",phone: "",email: "",password: "",gender: "",userImgURL: "/public/user_male.webp",
+    initialValues: {firstName: "",middleName: "",lastName: "",phone: "",email: "",password: "",gender: "",userImgURL: "",
       // address: {
       country: "",state: "",city: "",street: "",houseNumber: "",zipcode: "", 
            // },
@@ -39,7 +39,9 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo }) => {
       <form className="form-floating mb-3 mt-3" onSubmit={formik.handleSubmit}>
         <p className="display-3">Sign Up !</p>
         <h6 className=" mt-4 ">General</h6>
-        <div className="row border rounded-4">
+        {/* Contiue from here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
+        <div className="row g-2 border rounded-4 border-secondary mt-1"> 
+        {/* <div className="row border rounded-4"> */}
           <div className="form-floating col-6 mb-3 mt-3">
             <input type="text" className="form-control" id="floatingFirstName" placeholder="John Doe"
               name="firstName"
@@ -226,3 +228,4 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo }) => {
   );
 };
 export default SignUp;
+

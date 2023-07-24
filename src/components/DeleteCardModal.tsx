@@ -1,7 +1,8 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { successMsg } from "../services/feedbacksService";
 import { deleteCard } from "../services/cardService";
+import { SiteTheme } from "../App";
 
 interface DeleteProductModalProps {
   show: boolean;
@@ -18,9 +19,11 @@ const DeleteProductModal: FunctionComponent<DeleteProductModalProps> = ({
   render,
   cardTitle,
 }) => {
+  let theme = useContext(SiteTheme);
   return (
     <>
       <Modal
+      className={`${theme} set-modal`} 
         show={show}
         onHide={() => onHide()}
         size="sm"
@@ -36,7 +39,7 @@ const DeleteProductModal: FunctionComponent<DeleteProductModalProps> = ({
         </Modal.Body>
         <Modal.Footer>
           <Button
-            variant="success"
+            variant="danger"
             onClick={() =>
               deleteCard(cardId)
                 .then((res) => {
@@ -49,7 +52,7 @@ const DeleteProductModal: FunctionComponent<DeleteProductModalProps> = ({
           >
             Yes
           </Button>
-          <Button variant="danger" onClick={() => onHide()}>
+          <Button variant="secondary" onClick={() => onHide()}>
             Cancel
           </Button>
         </Modal.Footer>
