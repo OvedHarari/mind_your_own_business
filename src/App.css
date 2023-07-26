@@ -26,7 +26,8 @@
   --color-title: #b2b5b9;
   /* --color-title: #a5aaaf; */
 
-  --color-white: #a5aaaf;
+  --color-white: #cdcecf;
+  /* --color-white: #a5aaaf; */
   --color-black: #000;
   --color-grey0: #f8f8f8;
   --color-grey-1: #6c7983;
@@ -56,18 +57,40 @@
 
 }
 
-.set-modal .modal-content {
+.set-modal .modal-content, form{
  background-color: var(--color-primary) ;
  color: var(--color-title);
    .form-control{
   background-color: var(--color-primary);
     color: var(--color-title);
-         }
+}
+   .form-select{
+  background-color: var(--color-primary);
+    color: var(--color-title);
+  }
+ .form-control:not(:placeholder-shown)~label::after {
+      background-color: var(--color-secondary);
+    }
+ .form-control~label::after {
+      background-color: var(--color-secondary);
+          }
+.form-select~label::after {
+    background-color: var(--color-secondary);
+}
 
 }
+/* .form-floating>.form-select~label::after {
+  background-color: var(--color-primary);
+  color: var(--color-title); 
+} */
 
 .card {
   background-color: var(--color-secondary);
+  color: var(--color-title);
+}
+
+form {
+  background-color: var(--color-primary);
   color: var(--color-title);
 }
 
@@ -75,18 +98,7 @@
   position: absolute;
   bottom: 0;
   width: 90%;
- 
 }
-
- /* .dark {
- background-color: var(--color-primary) 
-} */
-
-
-/* 
-.App {
-  text-align: center;
-} */
 
 .search-bar {
   position: relative;
@@ -94,7 +106,7 @@
 
 .search-bar input[type="text"] {
   padding-right: 30px;
-  /* Space for the magnifying glass icon */
+
 }
 
 .search-bar .search-icon {

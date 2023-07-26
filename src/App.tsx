@@ -10,6 +10,7 @@ import PageNotFound from "./components/PageNotFound";
 import UsersManagement from "./components/UsersManagement";
 import MyCards from "./components/MyCards";
 import Favorites from "./components/Favorites";
+import UserProfile from "./components/UserProfile";
 
 let theme = {
   light: "light",
@@ -44,6 +45,7 @@ function App() {
             <Route path="/signup" element={<SignUp setUserInfo={setUserInfo} />} />
             <Route path="/mycards" element={<MyCards setUserInfo={setUserInfo} userInfo={userInfo} />}/>
             <Route path="/favorites" element={<Favorites setUserInfo={setUserInfo} userInfo={userInfo} />}/>
+            {/* <Route path="/userprofile" element={<UserProfile setUserInfo={setUserInfo} userInfo={userInfo} />}/> */}
             <Route path="/usersmanagement" element={<UsersManagement />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

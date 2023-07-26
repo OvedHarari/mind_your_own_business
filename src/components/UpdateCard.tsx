@@ -40,9 +40,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({onHide,render,userInfo,
     zipcode: "",
     isFavorite: false,
   // };
-}
-    
-  )
+})
     let formik = useFormik({
     initialValues: {title: card.title,subtitle: card.subtitle,description: card.description,phone: card.phone,email: card.email,webSite: card.webSite,businessImgURL: card.businessImgURL,businessImgAlt: card.businessImgAlt,
       // address: {

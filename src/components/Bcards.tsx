@@ -18,7 +18,7 @@ interface BcardsProps {
 
 const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
   let theme = useContext(SiteTheme);
-  let [cards, SetCards] = useState<Card[]>([]);
+  let [cards, setCards] = useState<Card[]>([]);
   let [openNewCardModal, setOpenNewCardModal] = useState<boolean>(false);
   let [openDeleteCardModal, setOpenDeleteCardModal] = useState<boolean>(false);
   let [openUpdateCardModal, setOpenUpdateCardModal] = useState<boolean>(false);
@@ -45,11 +45,9 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
   useEffect(() => {
     getFavorites(userInfo.userId).then((res)=>{ 
         let userFavorites = res.data.find((fav:any) => fav.userId === userInfo.userId);
-        console.log(userFavorites);
         let defaultCardIds: number[] = userFavorites?.cards.map((card:any) => card.id) || [];
-        console.log(defaultCardIds);
       setFavorites(defaultCardIds) }).catch((err)=>console.log(err))
-    getCards().then((res) => SetCards(res.data)).catch((err) => console.log(err));
+    getCards().then((res) => setCards(res.data)).catch((err) => console.log(err));
     
   }, [dataUpdated,userInfo.userId]);
 
@@ -68,9 +66,9 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
       
         <div className="text-end m-4 mb-2">
           {(userInfo.role === "business" || userInfo.role === "admin") && (
-            <Link
+            <Link 
               to=""
-              className="btn btn-secondary rounded-circle position-absolute bottom-0 end-0 mb-5 mx-5"
+              className="btn btn-secondary rounded-circle position-fixed bottom-0 end-0 mb-5 mx-5"
               onClick={() => setOpenNewCardModal(true)}
             >
               <i className="fa-solid fa-plus fs-1 fw-normal"></i>

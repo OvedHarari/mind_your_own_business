@@ -8,17 +8,15 @@
       "phone": "054-888XXXX",
       "email": "admin1@test.com",
       "password": "12345678",
-      "userImgURL": "images/user_male .webp",
+      "userImgURL": "images/user_male.webp",
       "gender": "male",
       "role": "admin",
-      "address": {
-        "country": "Israel",
-        "state": "",
-        "city": "Tel Aviv",
-        "street": "Rotshild",
-        "housNamber": "160",
-        "zipcode": ""
-      }
+      "country": "Israel",
+      "state": "",
+      "city": "Tel Aviv",
+      "street": "Rotshild",
+      "housNamber": "160",
+      "zipcode": ""
     },
     {
       "id": 2,
@@ -29,16 +27,14 @@
       "email": "business1@test.com",
       "password": "12345678",
       "gender": "male",
-      "userImgURL": "images/user_male .webp",
+      "userImgURL": "images/user_male.webp",
       "role": "business",
-      "address": {
-        "country": "Israel",
-        "state": "",
-        "city": "Tel Aviv",
-        "street": "Rotshild",
-        "housNamber": "170",
-        "zipcode": ""
-      }
+      "country": "Israel",
+      "state": "",
+      "city": "Tel Aviv",
+      "street": "Rotshild",
+      "housNamber": "170",
+      "zipcode": ""
     },
     {
       "id": 3,
@@ -48,17 +44,15 @@
       "phone": "054-888XXXX",
       "email": "user1@test.com",
       "password": "12345678",
-      "userImgURL": "images/user_male .webp",
+      "userImgURL": "images/user_male.webp",
       "gender": "female",
       "role": "user",
-      "address": {
-        "country": "Israel",
-        "state": "",
-        "city": "Tel Aviv",
-        "street": "Rotshild",
-        "housNamber": "180",
-        "zipcode": ""
-      }
+      "country": "Israel",
+      "state": "",
+      "city": "Tel Aviv",
+      "street": "Rotshild",
+      "housNamber": "180",
+      "zipcode": ""
     },
     {
       "firstName": "עובד",
@@ -152,7 +146,6 @@
       "houseNumber": "123 ",
       "zipcode": "90001",
       "owner": "business1@test.com",
-      "isFavorite": false,
       "id": 1
     },
     {
@@ -190,8 +183,6 @@
       "zipcode": "77001"
     },
     {
-      "id": 4,
-      "owner": "business1@test.com",
       "title": "Nature's Bounty",
       "subtitle": "Organic Grocery Store",
       "description": "Nature's Bounty offers a wide selection of organic and locally sourced groceries. We are committed to promoting sustainable and healthy living.",
@@ -204,8 +195,10 @@
       "state": "Ontario",
       "city": "Toronto",
       "street": "789 Green Avenue",
-      "housNamber": "Shop 10",
-      "zipcode": "M5V 2N8"
+      "houseNumber": "13",
+      "zipcode": "M5V 2N8",
+      "owner": "business1@test.com",
+      "id": 4
     },
     {
       "id": 5,
@@ -311,24 +304,6 @@
       "street": "789 Literary Lane",
       "housNamber": "Floor 1",
       "zipcode": "EH1 1DH"
-    },
-    {
-      "title": "test",
-      "subtitle": "dfgdfsg",
-      "description": "The Microsoft new headphones with high quality",
-      "phone": "+972508882416",
-      "email": "ovedhar@gmail.com",
-      "webSite": "sdgfdsafgds",
-      "businessImgURL": "dsfgsdg",
-      "businessImgAlt": "sdgdsgd",
-      "country": "Israel",
-      "state": "",
-      "city": "אלפי מנשה",
-      "street": "ירדן",
-      "houseNumber": "13",
-      "zipcode": "4485100",
-      "owner": "business1@test.com",
-      "id": 11
     }
   ],
   "favorites": [
@@ -352,8 +327,7 @@
           "city": "Edinburgh",
           "street": "789 Literary Lane",
           "housNamber": "Floor 1",
-          "zipcode": "EH1 1DH",
-          "isFavorite": false
+          "zipcode": "EH1 1DH"
         },
         {
           "id": 4,
@@ -371,8 +345,7 @@
           "city": "Toronto",
           "street": "789 Green Avenue",
           "housNamber": "Shop 10",
-          "zipcode": "M5V 2N8",
-          "isFavorite": false
+          "zipcode": "M5V 2N8"
         },
         {
           "id": 1,
@@ -414,12 +387,9 @@
           "city": "Edinburgh",
           "street": "789 Literary Lane",
           "housNamber": "Floor 1",
-          "zipcode": "EH1 1DH",
-          "isFavorite": false
+          "zipcode": "EH1 1DH"
         },
         {
-          "id": 4,
-          "owner": "business1@test.com",
           "title": "Nature's Bounty",
           "subtitle": "Organic Grocery Store",
           "description": "Nature's Bounty offers a wide selection of organic and locally sourced groceries. We are committed to promoting sustainable and healthy living.",
@@ -432,8 +402,10 @@
           "state": "Ontario",
           "city": "Toronto",
           "street": "789 Green Avenue",
-          "housNamber": "Shop 10",
-          "zipcode": "M5V 2N8"
+          "houseNumber": "13",
+          "zipcode": "M5V 2N8",
+          "owner": "business1@test.com",
+          "id": 4
         },
         {
           "id": 3,
@@ -474,8 +446,7 @@
           "city": "Edinburgh",
           "street": "789 Literary Lane",
           "housNamber": "Floor 1",
-          "zipcode": "EH1 1DH",
-          "isFavorite": false
+          "zipcode": "EH1 1DH"
         }
       ]
     },
@@ -499,8 +470,7 @@
           "city": "Edinburgh",
           "street": "789 Literary Lane",
           "housNamber": "Floor 1",
-          "zipcode": "EH1 1DH",
-          "isFavorite": false
+          "zipcode": "EH1 1DH"
         }
       ]
     },
@@ -527,8 +497,7 @@
           "city": "New York City",
           "street": "456 Art Avenue",
           "housNamber": "Floor 3",
-          "zipcode": "10001",
-          "isFavorite": false
+          "zipcode": "10001"
         },
         {
           "id": 6,
@@ -546,8 +515,7 @@
           "city": "Sydney",
           "street": "123 Baker Street",
           "housNamber": "Shop 5",
-          "zipcode": "2000",
-          "isFavorite": false
+          "zipcode": "2000"
         },
         {
           "id": 1,
@@ -565,8 +533,7 @@
           "city": "Los Angeles",
           "street": "123 Main Street",
           "housNamber": "Suite 101",
-          "zipcode": "90001",
-          "isFavorite": false
+          "zipcode": "90001"
         },
         {
           "id": 4,
@@ -584,8 +551,7 @@
           "city": "Toronto",
           "street": "789 Green Avenue",
           "housNamber": "Shop 10",
-          "zipcode": "M5V 2N8",
-          "isFavorite": false
+          "zipcode": "M5V 2N8"
         }
       ],
       "id": 6

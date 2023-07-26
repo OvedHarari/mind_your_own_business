@@ -31,11 +31,11 @@ export async function addToFavorites(userId: number, cardToAdd: Card) {
   }
 }
 
-export function checkIfFavorite(userId: number, cardIds: number[]) {
-  return axios.get(`${api}/${userId}/cards`, {
-    params: {
-      cardIds: cardIds.join(','),},});
-}
+// export function checkIfFavorite(userId: number, cardIds: number[]) {
+//   return axios.get(`${api}/${userId}/cards`, {
+//     params: {
+//       cardIds: cardIds.join(','),},});
+// }
 
 export async function removeFromFavorites(userId: number, cardId: number) {
   try {

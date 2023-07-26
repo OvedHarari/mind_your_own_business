@@ -16,3 +16,7 @@ export function addUser(newUser: User) {
 export function getUserByEmail(userEmail: string) {
   return axios.get(`${api}?email=${userEmail}`);
 }
+
+export function updateUser(updatedUser: User, id: number) {
+  return axios.put(`${api}/${id}`, updatedUser);
+}

@@ -19,8 +19,8 @@ export function getCardsByOwner(owner: string) {
 export function addNewCard(newCard: Card) {
   return axios.post(api, newCard);
 }
-export function updateCard(updatedPruduct: Card, id: number) {
-  return axios.put(`${api}/${id}`, updatedPruduct);
+export function updateCard(updatedCard: Card, id: number) {
+  return axios.put(`${api}/${id}`, updatedCard);
 }
 export function deleteCard(id: number) {
   return axios.delete(`${api}/${id}`);

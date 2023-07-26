@@ -1,7 +1,9 @@
-import { FunctionComponent, useContext } from "react";
+import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { SiteTheme } from "../App";
 import { successMsg } from "../services/feedbacksService";
+import { getUserByEmail } from "../services/usersService";
+import UserProfileModal from "./UserProfileModal";
 
 interface NavbarProps {
   darkMode: boolean;
@@ -17,7 +19,25 @@ const Navbar: FunctionComponent<NavbarProps> = ({
   setUserInfo,
 }) => {
   let theme = useContext(SiteTheme);
-
+  let [userProfileModal,setOpenUserProfileModal] = useState<boolean>(true)
+  let [userProfile,setUserProfile] = useState<any>({
+    id:0,
+  firstName: "",
+  middleName:"",
+  lastName: "",
+  phone: "",
+  email: "",
+  password: "",
+  userImgURL: "",
+  gender: "",
+  role: "",
+  country: "",
+  state: "",
+  city: "",
+  street: "",
+  houseNumber: "",
+  zipcode: "",
+  })
   let navigate = useNavigate();
   let signOut = () => {
     sessionStorage.removeItem("userInfo");
@@ -25,20 +45,20 @@ const Navbar: FunctionComponent<NavbarProps> = ({
     navigate("/");
     successMsg("You'v just signed out");
   };
+    useEffect(() => {
+    getUserByEmail(userInfo.email).then((res)=> {setUserProfile(res.data[0])
+    }).catch((err)=> console.log(err))
+  }, [userInfo.email]);
+
   return (
-    <div>
+    <>
+        <div>
       <nav
         className="navbar navbar-expand-md bg-body-tertiary "
         data-bs-theme={`${theme}`}
       >
         <div className="container-fluid">
           <NavLink className="navbar-brand fw-bold" to="/">
-            {/* <img
-              src="/mindYourOwnBusiness_LOGO.png"
-              alt="Mind Your Own Business logo"
-              width="38"
-              height="32"
-            ></img> */}
             M.Y.O.B
           </NavLink>
           <button
@@ -93,7 +113,6 @@ const Navbar: FunctionComponent<NavbarProps> = ({
                 <div className="row justify-content-center mt-1">
                   <div className="col-md-12">
                     <div className="search-bar">
-                      {/*cuanged form form to div above */}
                       <input
                         type="text"
                         className="form-control"
@@ -126,8 +145,10 @@ const Navbar: FunctionComponent<NavbarProps> = ({
               <button className="btn btn-outline" onClick={signOut}>
                 SignOut
               </button>
-              <img src="/images/user_male.webp" className="rounded-circle" width="50"
-               alt="user"></img>
+              <Link to="" onClick={()=>setOpenUserProfileModal(true)}><img src={userProfile.userImgURL}               
+              className="rounded-circle" width="50"
+               alt="user"></img></Link>
+              
                </>
               )}
  {!userInfo.email && (
@@ -144,6 +165,16 @@ const Navbar: FunctionComponent<NavbarProps> = ({
         </div>
       </nav>
     </div>
+
+     <UserProfileModal
+          show={userProfileModal}
+          onHide={() => setOpenUserProfileModal(false)}
+          // render={render}
+           userInfo= {userInfo}
+           setUserInfo={setUserInfo}
+        />
+    </>
+
   );
 };
 

@@ -7,6 +7,7 @@ import NewCardModal from "./NewCardModal";
 import DeleteCardModal from "./DeleteCardModal";
 import UpdateCardModal from "./UpdateCardModal";
 import { successMsg } from "../services/feedbacksService";
+import { getCards } from "../services/cardService";
 
 interface FavoritesProps {
     setUserInfo: Function;
@@ -15,7 +16,7 @@ interface FavoritesProps {
 
 const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo }) => {
  let theme = useContext(SiteTheme);
-  let [cards, SetCards] = useState<Card[]>([]);
+  let [cards, setCards] = useState<Card[]>([]);
   let [openNewCardModal, setOpenNewCardModal] = useState<boolean>(false);
   let [openDeleteCardModal, setOpenDeleteCardModal] = useState<boolean>(false);
   let [openUpdateCardModal, setOpenUpdateCardModal] = useState<boolean>(false);
@@ -44,10 +45,13 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
     getFavorites(userInfo.userId).then((res)=>{ 
         let userFavorites = res.data.find((fav:any) => fav.userId === userInfo.userId);
         let defaultCardIds: number[] = userFavorites?.cards.map((card:any) => card.id) || [];
-        let favoriteCards = userFavorites.cards
-        setFavorites(defaultCardIds);
-        SetCards(favoriteCards)    }).catch((err)=>console.log(err))  
-      }, [dataUpdated,userInfo.userId]);
+         setFavorites(defaultCardIds) }).catch((err)=>console.log(err))
+    }, [dataUpdated,userInfo.userId]);
+
+       useEffect(() => {
+         getCards().then((res) => {        
+        setCards(res.data.filter((card: Card) => favorites.includes(card.id as number)));}).catch((err) => console.log(err));
+       }, [favorites]);
 
  
   return (
@@ -67,7 +71,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
           {(userInfo.role === "business" || userInfo.role === "admin") && (
             <Link
               to=""
-              className="btn btn-secondary rounded-circle position-absolute bottom-0 end-0 mb-5 mx-5"
+              className="btn btn-secondary rounded-circle position-fixed bottom-0 end-0 mb-5 mx-5"
               onClick={() => setOpenNewCardModal(true)}
             >
               <i className="fa-solid fa-plus fs-1 fw-normal"></i>
