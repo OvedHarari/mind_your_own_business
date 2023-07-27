@@ -9,8 +9,11 @@ import { createFavoritsById } from "../services/favoritesService";
 
 interface SignUpProps {
   setUserInfo: Function;
+  passwordShown: boolean;
+  togglePassword: Function;
+
 }
-const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo }) => {
+const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo,passwordShown,togglePassword }) => {
 
   let navigate = useNavigate();
   let formik = useFormik({
@@ -90,15 +93,19 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo }) => {
             {formik.touched.email && formik.errors.email && (
               <p className="text-danger">{formik.errors.email}</p>)}
           </div>
-          <div className="form-floating col-6">
-            <input type="text" className="form-control border-secondary" id="floatingPassword" placeholder="Password"
+                    <div className="form-floating col-6">
+              <input type={passwordShown  ? "text" : "password"} className="form-control border-secondary" id="floatingPassword" placeholder="Password"
               name="password"
               onChange={formik.handleChange}
               value={formik.values.password}
-              onBlur={formik.handleBlur} ></input>
+              onBlur={formik.handleBlur}></input>
+              <div className="passIcon">
+                {passwordShown  ? <i className="fa-solid fa-eye-slash passIcon" onClick={()=>togglePassword(!passwordShown)}></i> : <i className="fa-solid fa-eye passIcon" onClick={()=>togglePassword(!passwordShown)}></i>}
+                            </div>
             <label htmlFor="floatingPassword">Password *</label>
             {formik.touched.password && formik.errors.password && (
               <p className="text-danger">{formik.errors.password}</p>)}
+              
           </div>
         </div>
         <h6 className="mt-4 text-start">Gander / Image</h6>

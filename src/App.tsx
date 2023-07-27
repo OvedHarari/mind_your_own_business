@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
@@ -10,7 +10,8 @@ import PageNotFound from "./components/PageNotFound";
 import UsersManagement from "./components/UsersManagement";
 import MyCards from "./components/MyCards";
 import Favorites from "./components/Favorites";
-import UserProfile from "./components/UserProfile";
+import { getUserByEmail } from "./services/usersService";
+
 
 let theme = {
   light: "light",
@@ -27,7 +28,34 @@ function App() {
       ? { email: false, isAdmin: false }
       : JSON.parse(sessionStorage.getItem("userInfo") as string)
   );
+  let [dataUpdated, setDataUpdated] = useState<boolean>(false);
+  let render = ()=> setDataUpdated(!dataUpdated)
+  let [userProfile,setUserProfile] = useState<any>({
+    id:0,
+  firstName: "",
+  middleName:"",
+  lastName: "",
+  phone: "",
+  email: "",
+  password: "",
+  userImgURL: "",
+  gender: "",
+  role: "",
+  country: "",
+  state: "",
+  city: "",
+  street: "",
+  houseNumber: "",
+  zipcode: "",
+  })
+    let [passwordShown, setPasswordShown] = useState(false);
+  let togglePassword = () => {setPasswordShown(!passwordShown);
+  };
 
+      useEffect(() => {
+    getUserByEmail(userInfo.email).then((res)=> {setUserProfile(res.data[0]);  
+    }).catch((err)=> console.log(err))
+  }, [userInfo.email,dataUpdated]);
   return (
     <SiteTheme.Provider value={darkMode ? theme.dark : theme.light}>
       <ToastContainer theme={`${darkMode ? "dark" : "light"}`} />
@@ -38,14 +66,20 @@ function App() {
             setUserInfo={setUserInfo}
             setDarkMode={setDarkMode}
             darkMode={darkMode}
+            userProfile={userProfile}
+            setUserProfile={setUserProfile}
+            render={render}
+            // dataUpdated={dataUpdated}
+            passwordShown={passwordShown}
+            togglePassword={togglePassword}
           />
           <Routes>
             <Route path="/" element={<Bcards userInfo={userInfo} setUserInfo={setUserInfo} />} />
-            <Route path="/signin" element={<SignIn setUserInfo={setUserInfo} />} />
-            <Route path="/signup" element={<SignUp setUserInfo={setUserInfo} />} />
+            <Route path="/signin" element={<SignIn setUserInfo={setUserInfo} passwordShown={passwordShown} togglePassword={togglePassword}/>} />
+            <Route path="/signup" element={<SignUp setUserInfo={setUserInfo} passwordShown={passwordShown}
+            togglePassword={togglePassword}/>} />
             <Route path="/mycards" element={<MyCards setUserInfo={setUserInfo} userInfo={userInfo} />}/>
             <Route path="/favorites" element={<Favorites setUserInfo={setUserInfo} userInfo={userInfo} />}/>
-            {/* <Route path="/userprofile" element={<UserProfile setUserInfo={setUserInfo} userInfo={userInfo} />}/> */}
             <Route path="/usersmanagement" element={<UsersManagement />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

@@ -1,43 +1,25 @@
-import { FunctionComponent, useContext, useEffect, useState } from "react";
+import { FunctionComponent, useContext, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import UserProfile from "./UserProfile";
 import { SiteTheme } from "../App";
-import User from "../interfaces/User";
-import { getUserByEmail } from "../services/usersService";
 
 interface UserProfileModalProps {
     show:boolean;
     onHide:Function;
     userInfo:any;
     setUserInfo:Function;
+    userProfile:any;
+    setUserProfile:Function;
+    render:Function;
+    passwordShown:boolean;
+    togglePassword:Function;
+
 }
  
-const UserProfileModal: FunctionComponent<UserProfileModalProps> = ({show,onHide,userInfo,setUserInfo}) => {
+const UserProfileModal: FunctionComponent<UserProfileModalProps> = ({show,onHide,userInfo,setUserInfo,userProfile,setUserProfile,render,passwordShown ,togglePassword}) => {
     let theme = useContext(SiteTheme);
     let [editForm,setEditForm] = useState<boolean>(true)
-let [userProfile,setUserProfile] = useState<User>({
-    id:0,
-  firstName: "",
-  middleName:"",
-  lastName: "",
-  phone: "",
-  email: "",
-  password: "",
-  userImgURL: "",
-  gender: "",
-  role: "",
-  country: "",
-  state: "",
-  city: "",
-  street: "",
-  houseNumber: "",
-  zipcode: "",
-  })
-      
-       useEffect(() => {
-    getUserByEmail(userInfo.email).then((res)=> {setUserProfile(res.data[0])
-    }).catch((err)=> console.log(err))
-  }, [userInfo.email]);
+
     return ( <div
       className="modal show"
       style={{ display: "block", position: "initial" }}
@@ -46,15 +28,15 @@ let [userProfile,setUserProfile] = useState<User>({
       className={`${theme} set-modal`} 
         show={show}
         onHide={() => onHide()}
-        // backdrop="static"
+        backdrop="static"
         keyboard={false}
         size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered  >
-        <Modal.Header closeButton>
+        <Modal.Header >
             <div className="row w-100">
              <div className="col-12 text-center">
-            <img src={userProfile.userImgURL}
+            <img src= {userProfile? (`${userProfile.userImgURL}`):("")}
                 className="img-fluid rounded-start"
                 alt="Set Profile Pic"
                 style={{ maxWidth: "200px" }}
@@ -75,14 +57,15 @@ let [userProfile,setUserProfile] = useState<User>({
 
         <Modal.Body>
           <UserProfile onHide={onHide} 
-        //   render={render} 
         setUserInfo={setUserInfo}
           userInfo={userInfo} 
           userProfile={userProfile}
           setUserProfile={setUserProfile}
           editForm={editForm}
           setEditForm={setEditForm}
-
+          render={render}
+          passwordShown={passwordShown}
+          togglePassword={togglePassword}
           />
         </Modal.Body>
       </Modal>

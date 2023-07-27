@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import {  updateUser } from "../services/usersService";
 import User from "../interfaces/User";
 import { useFormik } from "formik";
@@ -13,25 +13,33 @@ interface UserProfileProps {
   userProfile:any;
   editForm:boolean;
   setEditForm:Function;
+  render:Function;
+  togglePassword:Function;
+  passwordShown:boolean;
 }
 
-const UserProfile: FunctionComponent<UserProfileProps> = ({userInfo,setUserInfo,onHide,setUserProfile,userProfile,editForm,setEditForm}) => {
+const UserProfile: FunctionComponent<UserProfileProps> = ({userInfo,setUserInfo,onHide,setUserProfile,userProfile,editForm,setEditForm,render,togglePassword,passwordShown}) => {
+  // let [passwordShown, setPasswordShown] = useState(false);
+  // let togglePassword = () => {setPasswordShown(!passwordShown);
+  // };
     
     let formik = useFormik({
-    initialValues: {firstName: userProfile.firstName,middleName: userProfile.middleName,lastName:userProfile.lastName,phone: userProfile.phone,email: userProfile.email,password: "xxxxxxxx",gender: userProfile.gender,userImgURL: userProfile.userImgURL,
-      country: userProfile.country,state: userProfile.state,city: userProfile.city,street: userProfile.street,houseNumber: userProfile.houseNumber,zipcode: userProfile.zipcode,role: "user",},
+    initialValues: {firstName: userProfile.firstName,middleName: userProfile.middleName,lastName:userProfile.lastName,phone: userProfile.phone,email: userProfile.email,password: userProfile.password,gender: userProfile.gender,userImgURL: userProfile.userImgURL,
+      country: userProfile.country,state: userProfile.state,city: userProfile.city,street: userProfile.street,houseNumber: userProfile.houseNumber,zipcode: userProfile.zipcode,role: userProfile.role,},
     validationSchema: yup.object({firstName: yup.string().required().min(2),middleName: yup.string().min(2),lastName: yup.string().required().min(2),
-      phone: yup.string().required().min(2),email: yup.string().required().email(),password: yup.string().required().min(8),gender: yup.string().required(),userImgURL: yup.string().min(2),     
+      phone: yup.string().required().min(2),email: yup.string().required().email(),password: yup.string().required().min(8).matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%#^*?&]{8,}$/,"Password must contain at least 1 uppercase letter, lowercase letter, digit and special character (@$!%*?&#^)"),gender: yup.string().required(),userImgURL: yup.string().min(2),     
       country: yup.string().required().min(2),state: yup.string().min(2),city: yup.string().required().min(2),street: yup.string().required().min(2),
       houseNumber: yup.string().required().min(2),zipcode: yup.string().min(2),
       role: yup.string().min(2),    }),
       enableReinitialize: true,
     onSubmit(values: User) {
-      updateUser(values, userInfo.id)
+      updateUser(values, userProfile.id as number)
         .then((res) => {
           sessionStorage.setItem("userInfo",JSON.stringify({email: res.data.email,userId: res.data.id,role: res.data.role}));
           setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
           setEditForm(!editForm)
+           onHide();
+           render();
           successMsg(`Changes where saved for user ${values.email}`);        })
         .catch((err) => console.log(err));  },  });
   return <>  
@@ -98,14 +106,18 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({userInfo,setUserInfo,
               <p className="text-danger">{formik.errors.email}</p>)}
           </div>
           <div className="form-floating col-6">
-            <input type="text" className="form-control border-secondary" id="floatingPassword" placeholder="Password"
+              <input type={passwordShown  ? "text" : "password"} className="form-control border-secondary" id="floatingPassword" placeholder="Password"
               name="password"
               onChange={formik.handleChange}
               value={formik.values.password}
               onBlur={formik.handleBlur}  disabled={editForm}></input>
+              <div className="passIcon">
+                {passwordShown  ? <i className="fa-solid fa-eye-slash passIcon" onClick={()=>togglePassword(!passwordShown)}></i> : <i className="fa-solid fa-eye passIcon" onClick={()=>togglePassword(!passwordShown)}></i>}
+                            </div>
             <label htmlFor="floatingPassword">Password *</label>
             {formik.touched.password && formik.errors.password && (
               <p className="text-danger">{formik.errors.password}</p>)}
+              
           </div>
         </div>
         <h6 className="mt-4 text-start">Gander / Image</h6>
@@ -206,16 +218,16 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({userInfo,setUserInfo,
               <p className="text-danger">{formik.errors.zipcode}</p>)}
           </div>
         </div>
-        <div className="row">
-        <div className="col-6">
+       
+
+                 
+        <button className="btn btn-secondary w-100 mt-3" type="submit">Save Changes</button>
+       
+       
+      </form>
+              <div className="col-6">
         <button className="btn btn-danger mt-3" onClick={()=> {onHide(); setEditForm(!editForm)}}>Close Without Saving</button>
         </div>
-        
-          <div className="col-md-6  text-end">
-        <button className="btn btn-secondary mt-3" type="submit">Save Changes</button>
-        </div>
-        </div>
-      </form>
     </div>
           </div>
         </>

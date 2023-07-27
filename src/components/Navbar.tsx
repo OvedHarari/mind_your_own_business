@@ -1,8 +1,7 @@
-import { FunctionComponent, useContext, useEffect, useState } from "react";
+import { FunctionComponent, useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { SiteTheme } from "../App";
 import { successMsg } from "../services/feedbacksService";
-import { getUserByEmail } from "../services/usersService";
 import UserProfileModal from "./UserProfileModal";
 
 interface NavbarProps {
@@ -10,6 +9,12 @@ interface NavbarProps {
   setDarkMode: Function;
   userInfo: any;
   setUserInfo: Function;
+  userProfile:any;
+  setUserProfile:Function;
+  render:Function;
+  // dataUpdated:boolean;
+  passwordShown:boolean;
+  togglePassword:Function;
 }
 
 const Navbar: FunctionComponent<NavbarProps> = ({
@@ -17,40 +22,24 @@ const Navbar: FunctionComponent<NavbarProps> = ({
   darkMode,
   userInfo,
   setUserInfo,
+  userProfile,
+  setUserProfile,
+  render,
+  // dataUpdated,
+  passwordShown,
+  togglePassword
 }) => {
   let theme = useContext(SiteTheme);
-  let [userProfileModal,setOpenUserProfileModal] = useState<boolean>(true)
-  let [userProfile,setUserProfile] = useState<any>({
-    id:0,
-  firstName: "",
-  middleName:"",
-  lastName: "",
-  phone: "",
-  email: "",
-  password: "",
-  userImgURL: "",
-  gender: "",
-  role: "",
-  country: "",
-  state: "",
-  city: "",
-  street: "",
-  houseNumber: "",
-  zipcode: "",
-  })
+  let [userProfileModal,setOpenUserProfileModal] = useState<boolean>(false)
   let navigate = useNavigate();
   let signOut = () => {
     sessionStorage.removeItem("userInfo");
     setUserInfo({ email: false, role: false });
     navigate("/");
-    successMsg("You'v just signed out");
+    successMsg("See you soon 😉");
   };
-    useEffect(() => {
-    getUserByEmail(userInfo.email).then((res)=> {setUserProfile(res.data[0])
-    }).catch((err)=> console.log(err))
-  }, [userInfo.email]);
-
   return (
+
     <>
         <div>
       <nav
@@ -145,10 +134,9 @@ const Navbar: FunctionComponent<NavbarProps> = ({
               <button className="btn btn-outline" onClick={signOut}>
                 SignOut
               </button>
-              <Link to="" onClick={()=>setOpenUserProfileModal(true)}><img src={userProfile.userImgURL}               
+              <Link to="" onClick={()=>setOpenUserProfileModal(true)}><img src={userProfile? (`${userProfile.userImgURL}`):("")}
               className="rounded-circle" width="50"
                alt="user"></img></Link>
-              
                </>
               )}
  {!userInfo.email && (
@@ -169,9 +157,13 @@ const Navbar: FunctionComponent<NavbarProps> = ({
      <UserProfileModal
           show={userProfileModal}
           onHide={() => setOpenUserProfileModal(false)}
-          // render={render}
+          render={render}
            userInfo= {userInfo}
            setUserInfo={setUserInfo}
+           userProfile={userProfile}
+           setUserProfile={setUserProfile}
+           togglePassword={togglePassword}
+           passwordShown={passwordShown}
         />
     </>
 

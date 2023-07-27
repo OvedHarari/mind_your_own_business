@@ -116,3 +116,12 @@ form {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+.passIcon{
+  
+position: absolute;
+  right: 10px;
+  bottom: 4px;
+  top: 12px;
+    
+}
