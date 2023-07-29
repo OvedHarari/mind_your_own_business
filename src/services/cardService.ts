@@ -1,7 +1,6 @@
 import axios from "axios";
 import Card from "../interfaces/Card";
 
-
 let api: string = `${process.env.REACT_APP_API}/cards`;
 
 export function getCards() {
@@ -19,9 +18,11 @@ export function getCardsByOwner(owner: string) {
 export function addNewCard(newCard: Card) {
   return axios.post(api, newCard);
 }
+
 export function updateCard(updatedCard: Card, id: number) {
   return axios.put(`${api}/${id}`, updatedCard);
 }
+
 export function deleteCard(id: number) {
   return axios.delete(`${api}/${id}`);
 }

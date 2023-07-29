@@ -1,30 +1,31 @@
 {
   "users": [
     {
-      "id": 1,
       "firstName": "Admin",
-      "middleName": "",
+      "middleName": "Ov",
       "lastName": "User",
       "phone": "054-888XXXX",
       "email": "admin1@test.com",
       "password": "12345678",
-      "userImgURL": "images/user_male.webp",
       "gender": "male",
-      "role": "admin",
+      "userImgURL": "images/user_male.webp",
       "country": "Israel",
       "state": "",
       "city": "Tel Aviv",
       "street": "Rotshild",
-      "housNamber": "160",
-      "zipcode": "4485100"
+      "houseNumber": "12",
+      "zipcode": "4485100",
+      "role": "admin",
+      "active": true,
+      "id": 1
     },
     {
       "firstName": "Business",
-      "middleName": "",
+      "middleName": "Ov",
       "lastName": "User",
       "phone": "+972508882416",
       "email": "business1@test.com",
-      "password": "12345678",
+      "password": "O5o88*2416",
       "gender": "male",
       "userImgURL": "images/user_male.webp",
       "country": "Israel",
@@ -34,25 +35,27 @@
       "houseNumber": "171",
       "zipcode": "4485100",
       "role": "business",
+      "active": true,
       "id": 2
     },
     {
-      "id": 3,
       "firstName": "User",
-      "middleName": "",
+      "middleName": "Ov",
       "lastName": "User",
       "phone": "054-888XXXX",
       "email": "user1@test.com",
-      "password": "12345678",
-      "userImgURL": "images/user_male.webp",
+      "password": "O5o88*2416",
       "gender": "female",
-      "role": "user",
+      "userImgURL": "images/user_male.webp",
       "country": "Israel",
       "state": "",
       "city": "Tel Aviv",
       "street": "Rotshild",
-      "housNamber": "180",
-      "zipcode": ""
+      "houseNumber": "12",
+      "zipcode": "",
+      "role": "casual",
+      "active": true,
+      "id": 3
     },
     {
       "firstName": "עובד",
@@ -70,63 +73,8 @@
       "houseNumber": "13",
       "zipcode": "4485100",
       "role": "business",
-      "id": 4
-    },
-    {
-      "firstName": "עובד",
-      "middleName": "",
-      "lastName": "הררי",
-      "phone": "+972508882416",
-      "email": "busibess2@test.com",
-      "password": "12345678",
-      "gender": "female",
-      "userImgURL": "images/user_male.webp",
-      "country": "Israel",
-      "state": "",
-      "city": "אלפי מנשה",
-      "street": "ירדן",
-      "houseNumber": "13",
-      "zipcode": "4485100",
-      "role": "business",
-      "id": 5
-    },
-    {
-      "firstName": "עובד",
-      "middleName": "",
-      "lastName": "הררי",
-      "phone": "+972508882416",
-      "email": "ovedhar2@gmail.com",
-      "password": "12345678",
-      "gender": "male",
-      "userImgURL": "images/user_male.webp",
-      "country": "Israel",
-      "state": "",
-      "city": "אלפי מנשה",
-      "street": "ירדן",
-      "houseNumber": "13",
-      "zipcode": "4485100",
-      "role": "user",
-      "id": 6
-    }
-  ],
-  "rolePermissions": [
-    {
-      "role": "admin",
-      "navbarType": "adminManue",
-      "cardsAccess": true,
-      "userManagementAccess": true
-    },
-    {
-      "role": "business",
-      "navbarType": "businessManue",
-      "cardsAccess": true,
-      "userManagementAccess": false
-    },
-    {
-      "role": "user",
-      "navbarType": "userManue",
-      "cardsAccess": false,
-      "userManagementAccess": false
+      "id": 4,
+      "active": true
     }
   ],
   "cards": [
@@ -348,8 +296,23 @@
           "zipcode": "M5V 2N8"
         },
         {
-          "id": 1,
+          "id": 2,
           "owner": "business1@test.com",
+          "title": "Emily's Art Gallery",
+          "description": "Emily's Art Gallery showcases contemporary artworks from talented artists across the globe. We offer a diverse collection of paintings, sculptures, and other artistic creations.",
+          "phone": "+1 (555) 987-6543",
+          "email": "contact@emilysgallery.com",
+          "webSite": "https://www.emilysgallery.com",
+          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
+          "businessImgAlt": "Emily's Art Gallery",
+          "country": "United States",
+          "state": "New York",
+          "city": "New York City",
+          "street": "456 Art Avenue",
+          "housNamber": "Floor 3",
+          "zipcode": "10001"
+        },
+        {
           "title": "Doe's Cafe",
           "subtitle": "A cozy place for coffee lovers",
           "description": "Doe's Cafe offers a warm and inviting atmosphere for coffee enthusiasts. We serve a variety of specialty coffee blends and delicious pastries.",
@@ -361,9 +324,11 @@
           "country": "United States",
           "state": "California",
           "city": "Los Angeles",
-          "street": "123 Main Street",
-          "housNamber": "Suite 101",
-          "zipcode": "90001"
+          "street": "Main Street",
+          "houseNumber": "123 ",
+          "zipcode": "90001",
+          "owner": "business1@test.com",
+          "id": 1
         }
       ]
     },
@@ -371,24 +336,6 @@
       "id": 2,
       "userId": 2,
       "cards": [
-        {
-          "id": 10,
-          "owner": "ovedhar@gmail.com",
-          "title": "Bookworm Haven",
-          "subtitle": "Independent Bookstore",
-          "description": "Bookworm Haven is a charming independent bookstore with a carefully curated selection of books, cozy reading nooks, and regular author events.",
-          "phone": "+1 (555) 987-6543",
-          "email": "hello@bookwormhaven.com",
-          "webSite": "https://www.bookwormhaven.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
-          "businessImgAlt": "Bookworm Haven",
-          "country": "United Kingdom",
-          "state": "Scotland",
-          "city": "Edinburgh",
-          "street": "789 Literary Lane",
-          "housNamber": "Floor 1",
-          "zipcode": "EH1 1DH"
-        },
         {
           "title": "Nature's Bounty",
           "subtitle": "Organic Grocery Store",
@@ -423,6 +370,23 @@
           "street": "789 Tech Boulevard",
           "housNamber": "Unit 5",
           "zipcode": "77001"
+        },
+        {
+          "id": 2,
+          "owner": "business1@test.com",
+          "title": "Emily's Art Gallery",
+          "description": "Emily's Art Gallery showcases contemporary artworks from talented artists across the globe. We offer a diverse collection of paintings, sculptures, and other artistic creations.",
+          "phone": "+1 (555) 987-6543",
+          "email": "contact@emilysgallery.com",
+          "webSite": "https://www.emilysgallery.com",
+          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
+          "businessImgAlt": "Emily's Art Gallery",
+          "country": "United States",
+          "state": "New York",
+          "city": "New York City",
+          "street": "456 Art Avenue",
+          "housNamber": "Floor 3",
+          "zipcode": "10001"
         }
       ]
     },
@@ -473,88 +437,6 @@
           "zipcode": "EH1 1DH"
         }
       ]
-    },
-    {
-      "userId": 5,
-      "cards": [],
-      "id": 5
-    },
-    {
-      "userId": 6,
-      "cards": [
-        {
-          "id": 2,
-          "owner": "business1@test.com",
-          "title": "Emily's Art Gallery",
-          "description": "Emily's Art Gallery showcases contemporary artworks from talented artists across the globe. We offer a diverse collection of paintings, sculptures, and other artistic creations.",
-          "phone": "+1 (555) 987-6543",
-          "email": "contact@emilysgallery.com",
-          "webSite": "https://www.emilysgallery.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
-          "businessImgAlt": "Emily's Art Gallery",
-          "country": "United States",
-          "state": "New York",
-          "city": "New York City",
-          "street": "456 Art Avenue",
-          "housNamber": "Floor 3",
-          "zipcode": "10001"
-        },
-        {
-          "id": 6,
-          "owner": "ovedhar@gmail.com",
-          "title": "Baker's Delight",
-          "subtitle": "Artisan Bakery",
-          "description": "Baker's Delight is a family-owned artisan bakery known for its freshly baked bread, pastries, and mouthwatering desserts.",
-          "phone": "+1 (555) 876-5432",
-          "email": "hello@bakersdelight.com",
-          "webSite": "https://www.bakersdelight.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
-          "businessImgAlt": "Baker's Delight",
-          "country": "Australia",
-          "state": "New South Wales",
-          "city": "Sydney",
-          "street": "123 Baker Street",
-          "housNamber": "Shop 5",
-          "zipcode": "2000"
-        },
-        {
-          "id": 1,
-          "owner": "business1@test.com",
-          "title": "Doe's Cafe",
-          "subtitle": "A cozy place for coffee lovers",
-          "description": "Doe's Cafe offers a warm and inviting atmosphere for coffee enthusiasts. We serve a variety of specialty coffee blends and delicious pastries.",
-          "phone": "+1 (555) 123-4567",
-          "email": "info@doescafe.com",
-          "webSite": "https://www.doescafe.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
-          "businessImgAlt": "Doe's Cafe",
-          "country": "United States",
-          "state": "California",
-          "city": "Los Angeles",
-          "street": "123 Main Street",
-          "housNamber": "Suite 101",
-          "zipcode": "90001"
-        },
-        {
-          "id": 4,
-          "owner": "business1@test.com",
-          "title": "Nature's Bounty",
-          "subtitle": "Organic Grocery Store",
-          "description": "Nature's Bounty offers a wide selection of organic and locally sourced groceries. We are committed to promoting sustainable and healthy living.",
-          "phone": "+1 (555) 234-5678",
-          "email": "info@naturesbounty.com",
-          "webSite": "https://www.naturesbounty.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
-          "businessImgAlt": "Nature's Bounty",
-          "country": "Canada",
-          "state": "Ontario",
-          "city": "Toronto",
-          "street": "789 Green Avenue",
-          "housNamber": "Shop 10",
-          "zipcode": "M5V 2N8"
-        }
-      ],
-      "id": 6
     }
   ]
 }

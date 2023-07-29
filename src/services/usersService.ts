@@ -20,3 +20,11 @@ export function getUserByEmail(userEmail: string) {
 export function updateUser(updatedUser: User, id: number) {
   return axios.put(`${api}/${id}`, updatedUser);
 }
+
+export function getAllUsers(){
+  return axios.get(api)
+}
+
+export function deleteUserById(userId: number) {
+  return axios.delete(`${api}/${userId}`);
+}

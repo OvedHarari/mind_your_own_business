@@ -19,7 +19,6 @@ export async function addToFavorites(userId: number, cardToAdd: Card) {
   try {
     // 1. get user's favorits object
     let res = await getFavorites(userId);
-
     // 2. add the favorit card to favorits array
     res.data[0].cards.push({ ...cardToAdd});
     // 3. update the favorits object 
@@ -30,12 +29,6 @@ export async function addToFavorites(userId: number, cardToAdd: Card) {
     console.log(error);
   }
 }
-
-// export function checkIfFavorite(userId: number, cardIds: number[]) {
-//   return axios.get(`${api}/${userId}/cards`, {
-//     params: {
-//       cardIds: cardIds.join(','),},});
-// }
 
 export async function removeFromFavorites(userId: number, cardId: number) {
   try {

@@ -9,12 +9,11 @@ export default interface User {
   userImgURL?: string;
   gender?: string;
   role?: string;
-  // address?: {
   country?: string;
   state?: string;
   city?: string;
   street?: string;
   houseNumber?: string;
   zipcode?: string;
-  // };
+  active?: boolean;
 }

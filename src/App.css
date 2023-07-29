@@ -5,6 +5,7 @@
   /* --color-primary: #191d2b; */
   --color-secondary: #c2caca88;
   /* --color-secondary: #157347; */
+  --color-modal: #ededed;
   --color-title: #212529;
   --color-white: #ffffff;
   --color-black: #000;
@@ -17,13 +18,17 @@
   --color-grey-6: #12181b;
   --box-shadow-1: 0 3px 15px rgba(0, 0, 0, 0.3);
   --box-shadow-2: 0 2px 5px rgba(248, 248, 248, 0.2);
+  --hover-color: #fff;
 }
+
 .dark {
   --color-primary: #212529;
   /* --color-primary: #191d2b; */
   --color-secondary: #586573;
+  --color-modal: #414952;
   /* --color-secondary: #254f79; */
-  --color-title: #b2b5b9;
+  --color-title: #bfd0e6;
+  /* --color-title: #b2b5b9; */
   /* --color-title: #a5aaaf; */
 
   --color-white: #cdcecf;
@@ -40,12 +45,9 @@
   --br-sm-2: 14px;
   --box-shadow-1: 0 3px 15px rgba(0, 0, 0, 0.3);
   --box-shadow-2: 0 2px 5px rgba(248, 248, 248, 0.2);
+  --hover-color: #fff;
 }
 
-/* .home {
-  background-color: var(--color-primary);
-
-} */
 
 .App {
   text-align: center;
@@ -54,47 +56,46 @@
   height: 100%;
   min-height: 100vh;
   padding-bottom: 3rem;
-
+  font-family: "Signika Negative", sans-serif;
 }
 
-.set-modal .modal-content, form{
- background-color: var(--color-primary) ;
- color: var(--color-title);
-   .form-control{
+.signup,
+.signin {
   background-color: var(--color-primary);
-    color: var(--color-title);
+  color: var(--color-title);
+  
 }
-   .form-select{
-  background-color: var(--color-primary);
+
+.set-modal .modal-content,
+form {
+  background-color: var(--color-modal);
+  color: var(--color-title);
+
+  .form-control,
+  .form-select {
+    background-color: var(--color-modal);
     color: var(--color-title);
   }
- .form-control:not(:placeholder-shown)~label::after {
-      background-color: var(--color-secondary);
-    }
- .form-control~label::after {
-      background-color: var(--color-secondary);
-          }
-.form-select~label::after {
+
+  .form-control:not(:placeholder-shown)~label::after,
+  .form-control~label::after {
     background-color: var(--color-secondary);
+  }
+
+  .form-control:not(:placeholder-shown)~label,
+  .form-control:placeholder-shown~label {
+    color: var(--color-title);
+  }
 }
 
-}
-/* .form-floating>.form-select~label::after {
-  background-color: var(--color-primary);
-  color: var(--color-title); 
-} */
 
 .card {
   background-color: var(--color-secondary);
   color: var(--color-title);
 }
 
-form {
-  background-color: var(--color-primary);
-  color: var(--color-title);
-}
 
-.cardIcons{
+.cardIcons {
   position: absolute;
   bottom: 0;
   width: 90%;
@@ -106,7 +107,6 @@ form {
 
 .search-bar input[type="text"] {
   padding-right: 30px;
-
 }
 
 .search-bar .search-icon {
@@ -117,11 +117,17 @@ form {
   cursor: pointer;
 }
 
-.passIcon{
-  
-position: absolute;
+.passIcon {
+  position: absolute;
   right: 10px;
   bottom: 4px;
   top: 12px;
-    
+}
+
+.profileImg {
+  cursor: pointer;
+
+  &&:hover {
+    opacity: 0.3;
+  }
 }

@@ -9,13 +9,11 @@ export default interface Card {
   webSite: string;
   businessImgURL?: string;
   businessImgAlt?: string;
-  // address: {
-    country: string;
-    state?: string;
-    city: string;
-    street: string;
-    houseNumber: string;
-    zipcode: string;
-    isFavorite: boolean;
-  // };
+  country: string;
+  state?: string;
+  city: string;
+  street: string;
+  houseNumber: string;
+  zipcode: string;
+  isFavorite: boolean;
 }

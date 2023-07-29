@@ -3,26 +3,30 @@ import { Button, Modal } from "react-bootstrap";
 import { successMsg } from "../services/feedbacksService";
 import { deleteCard } from "../services/cardService";
 import { SiteTheme } from "../App";
+import { deleteUserById } from "../services/usersService";
 
-interface DeleteCardModalProps {
+interface DeleteUserModalProps {
   show: boolean;
   onHide: Function;
-  cardId: number;
   render: Function;
-  cardTitle: string;
+  userId: number;
+  userFirstName: number;
+  userLastName: number;
 }
-const DeleteCardModal: FunctionComponent<DeleteCardModalProps> = ({
+
+const DeleteUserModal: FunctionComponent<DeleteUserModalProps> = ({
   show,
   onHide,
-  cardId,
   render,
-  cardTitle,
+  userId,
+  userFirstName,
+  userLastName,
 }) => {
   let theme = useContext(SiteTheme);
   return (
     <>
       <Modal
-      className={`${theme} set-modal`} 
+        className={`${theme} set-modal`}
         show={show}
         onHide={() => onHide()}
         size="sm"
@@ -30,22 +34,23 @@ const DeleteCardModal: FunctionComponent<DeleteCardModalProps> = ({
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>Delete Business Card</Modal.Title>
+          <Modal.Title>User Deletion!!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure you want to delete <span className="fw-bold"> {cardTitle}</span> business card ?
+          Are you sure you want to delete
+          <span className="fw-bold"> "{userFirstName} {userLastName}"</span> ?
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="danger"
             onClick={() =>
-              deleteCard(cardId)
+              deleteUserById(userId)
                 .then((res) => {
                   render();
                   onHide();
-                  successMsg(`${cardTitle} business card was deleted successfully!`); })
-                .catch((err) => console.log(err))
-            } >Yes</Button>
+                  successMsg(`The User of ${userFirstName} ${userLastName} was deleted successfully!`);
+                })
+                .catch((err) => console.log(err)) }>Yes</Button>
           <Button variant="secondary" onClick={() => onHide()}>
             Cancel
           </Button>
@@ -55,4 +60,4 @@ const DeleteCardModal: FunctionComponent<DeleteCardModalProps> = ({
   );
 };
 
-export default DeleteCardModal;
+export default DeleteUserModal;

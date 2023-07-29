@@ -11,9 +11,10 @@ import UsersManagement from "./components/UsersManagement";
 import MyCards from "./components/MyCards";
 import Favorites from "./components/Favorites";
 import { getUserByEmail } from "./services/usersService";
+import About from "./components/About";
 
 
-let theme = {
+const theme = {
   light: "light",
   dark: "dark",
 };
@@ -47,6 +48,7 @@ function App() {
   street: "",
   houseNumber: "",
   zipcode: "",
+  active: ""
   })
     let [passwordShown, setPasswordShown] = useState(false);
   let togglePassword = () => {setPasswordShown(!passwordShown);
@@ -78,9 +80,10 @@ function App() {
             <Route path="/signin" element={<SignIn setUserInfo={setUserInfo} passwordShown={passwordShown} togglePassword={togglePassword}/>} />
             <Route path="/signup" element={<SignUp setUserInfo={setUserInfo} passwordShown={passwordShown}
             togglePassword={togglePassword}/>} />
-            <Route path="/mycards" element={<MyCards setUserInfo={setUserInfo} userInfo={userInfo} />}/>
+            <Route path="/mycards" element={<MyCards userInfo={userInfo} />}/>
             <Route path="/favorites" element={<Favorites setUserInfo={setUserInfo} userInfo={userInfo} />}/>
-            <Route path="/usersmanagement" element={<UsersManagement />} />
+            <Route path="/about" element={<About userInfo={userInfo} />}/>
+            <Route path="/usersmanagement" element={<UsersManagement darkMode={darkMode} render={render} setUserInfo={setUserInfo} userProfile={userProfile} setUserProfile={setUserProfile}  passwordShown={passwordShown} togglePassword={togglePassword} userInfo={userInfo} dataUpdated={dataUpdated} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Router>
