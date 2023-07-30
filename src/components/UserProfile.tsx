@@ -20,7 +20,7 @@ interface UserProfileProps {
 const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide, userProfile, editForm, setEditForm, render, togglePassword, passwordShown }) => {
   let formik = useFormik({
     initialValues: {
-      firstName: userProfile.firstName, middleName: userProfile.middleName, lastName: userProfile.lastName, phone: userProfile.phone, email: userProfile.email, password: userProfile.password, gender: userProfile.gender, userImgURL: userProfile.userImgURL, country: userProfile.country, state: userProfile.state, city: userProfile.city, street: userProfile.street, houseNumber: userProfile.houseNumber, zipcode: userProfile.zipcode, role: userProfile.role, active: userProfile.active
+      firstName: userProfile.firstName, middleName: userProfile.middleName, lastName: userProfile.lastName, phone: userProfile.phone, email: userProfile.email, password: userProfile.password, gender: userProfile.gender, userImgURL: userProfile.userImgURL, country: userProfile.country, state: userProfile.state, city: userProfile.city, street: userProfile.street, houseNumber: userProfile.houseNumber, zipcode: userProfile.zipcode, role: userProfile.role, isActive: userProfile.isActive
     },
     validationSchema: yup.object({
       firstName: yup.string().required().min(2), middleName: yup.string().min(2), lastName: yup.string().required().min(2),

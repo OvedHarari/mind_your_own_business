@@ -18,7 +18,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
     initialValues: {
       firstName: "", middleName: "", lastName: "", phone: "", email: "", password: "", gender: "", userImgURL: "",
       country: "", state: "", city: "", street: "", houseNumber: "", zipcode: "",
-      role: "casual", active: true
+      role: "casual", isActive: true
     },
     validationSchema: yup.object({
       firstName: yup.string().required().min(2), middleName: yup.string().min(2), lastName: yup.string().required().min(2),

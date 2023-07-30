@@ -30,38 +30,40 @@ function App() {
       : JSON.parse(sessionStorage.getItem("userInfo") as string)
   );
   let [dataUpdated, setDataUpdated] = useState<boolean>(false);
-  let render = ()=> setDataUpdated(!dataUpdated)
-  let [userProfile,setUserProfile] = useState<any>({
-    id:0,
-  firstName: "",
-  middleName:"",
-  lastName: "",
-  phone: "",
-  email: "",
-  password: "",
-  userImgURL: "",
-  gender: "",
-  role: "",
-  country: "",
-  state: "",
-  city: "",
-  street: "",
-  houseNumber: "",
-  zipcode: "",
-  active: ""
+  let render = () => setDataUpdated(!dataUpdated)
+  let [userProfile, setUserProfile] = useState<any>({
+    id: 0,
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    password: "",
+    userImgURL: "",
+    gender: "",
+    role: "",
+    country: "",
+    state: "",
+    city: "",
+    street: "",
+    houseNumber: "",
+    zipcode: "",
+    isActive: ""
   })
-    let [passwordShown, setPasswordShown] = useState(false);
-  let togglePassword = () => {setPasswordShown(!passwordShown);
+  let [passwordShown, setPasswordShown] = useState(false);
+  let togglePassword = () => {
+    setPasswordShown(!passwordShown);
   };
 
-      useEffect(() => {
-    getUserByEmail(userInfo.email).then((res)=> {setUserProfile(res.data[0]);  
-    }).catch((err)=> console.log(err))
-  }, [userInfo.email,dataUpdated]);
+  useEffect(() => {
+    getUserByEmail(userInfo.email).then((res) => {
+      setUserProfile(res.data[0]);
+    }).catch((err) => console.log(err))
+  }, [userInfo.email, dataUpdated]);
   return (
     <SiteTheme.Provider value={darkMode ? theme.dark : theme.light}>
       <ToastContainer theme={`${darkMode ? "dark" : "light"}`} />
-        <div className={`App  ${darkMode ? "dark" : "light"}`}>
+      <div className={`App  ${darkMode ? "dark" : "light"}`}>
         <Router>
           <Navbar
             userInfo={userInfo}
@@ -77,13 +79,13 @@ function App() {
           />
           <Routes>
             <Route path="/" element={<Bcards userInfo={userInfo} setUserInfo={setUserInfo} />} />
-            <Route path="/signin" element={<SignIn setUserInfo={setUserInfo} passwordShown={passwordShown} togglePassword={togglePassword}/>} />
+            <Route path="/signin" element={<SignIn setUserInfo={setUserInfo} passwordShown={passwordShown} togglePassword={togglePassword} />} />
             <Route path="/signup" element={<SignUp setUserInfo={setUserInfo} passwordShown={passwordShown}
-            togglePassword={togglePassword}/>} />
-            <Route path="/mycards" element={<MyCards userInfo={userInfo} />}/>
-            <Route path="/favorites" element={<Favorites setUserInfo={setUserInfo} userInfo={userInfo} />}/>
-            <Route path="/about" element={<About userInfo={userInfo} />}/>
-            <Route path="/usersmanagement" element={<UsersManagement darkMode={darkMode} render={render} setUserInfo={setUserInfo} userProfile={userProfile} setUserProfile={setUserProfile}  passwordShown={passwordShown} togglePassword={togglePassword} userInfo={userInfo} dataUpdated={dataUpdated} />} />
+              togglePassword={togglePassword} />} />
+            <Route path="/mycards" element={<MyCards userInfo={userInfo} />} />
+            <Route path="/favorites" element={<Favorites setUserInfo={setUserInfo} userInfo={userInfo} />} />
+            <Route path="/about" element={<About userInfo={userInfo} />} />
+            <Route path="/usersmanagement" element={<UsersManagement darkMode={darkMode} render={render} setUserInfo={setUserInfo} userProfile={userProfile} setUserProfile={setUserProfile} passwordShown={passwordShown} togglePassword={togglePassword} userInfo={userInfo} dataUpdated={dataUpdated} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Router>

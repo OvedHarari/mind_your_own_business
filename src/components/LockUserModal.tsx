@@ -2,24 +2,26 @@ import { FunctionComponent, useContext } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { successMsg } from "../services/feedbacksService";
 import { SiteTheme } from "../App";
-import { deleteUserById } from "../services/usersService";
+import { activateUser } from "../services/usersService";
 
-interface DeleteUserModalProps {
+interface LockUserModalProps {
   show: boolean;
   onHide: Function;
   render: Function;
   userId: number;
   userFirstName: number;
   userLastName: number;
+  isActive: boolean
 }
 
-const DeleteUserModal: FunctionComponent<DeleteUserModalProps> = ({
+const LockUserModal: FunctionComponent<LockUserModalProps> = ({
   show,
   onHide,
   render,
   userId,
   userFirstName,
   userLastName,
+  isActive
 }) => {
   let theme = useContext(SiteTheme);
   return (
@@ -33,21 +35,24 @@ const DeleteUserModal: FunctionComponent<DeleteUserModalProps> = ({
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>User Deletion!!</Modal.Title>
+          <Modal.Title>Lock/Unlock User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure you want to delete
-          <span className="fw-bold"> "{userFirstName} {userLastName}"</span> ?
+          {isActive ? (<p>Are you sure you want to LOCK
+            <span className="fw-bold"> "{userFirstName} {userLastName}"</span> ?</p>) : (<p>Are you sure you want to UNLOCK
+              <span className="fw-bold"> "{userFirstName} {userLastName}"</span> ?</p>)}
+
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="danger"
             onClick={() =>
-              deleteUserById(userId)
+              activateUser(userId, !isActive)
                 .then((res) => {
                   render();
                   onHide();
-                  successMsg(`The User of ${userFirstName} ${userLastName} was deleted successfully!`);
+                  isActive ? (successMsg(`User ${userFirstName} ${userLastName} was LOCKED !`)) : (successMsg(`User ${userFirstName} ${userLastName} is now UNLOCKED!`))
+
                 })
                 .catch((err) => console.log(err))}>Yes</Button>
           <Button variant="secondary" onClick={() => onHide()}>
@@ -59,4 +64,4 @@ const DeleteUserModal: FunctionComponent<DeleteUserModalProps> = ({
   );
 };
 
-export default DeleteUserModal;
+export default LockUserModal;

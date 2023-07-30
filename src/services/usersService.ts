@@ -16,9 +16,12 @@ export function addUser(newUser: User) {
 export function getUserByEmail(userEmail: string) {
   return axios.get(`${api}?email=${userEmail}`);
 }
+export function getUserById(userId:number){
+ return axios.get(`${api}/${userId}`);
+}
 
-export function updateUser(updatedUser: User, id: number) {
-  return axios.put(`${api}/${id}`, updatedUser);
+export function updateUser(updatedUser: User, userId: number) {
+  return axios.put(`${api}/${userId}`, updatedUser);
 }
 
 export function getAllUsers(){
@@ -27,4 +30,42 @@ export function getAllUsers(){
 
 export function deleteUserById(userId: number) {
   return axios.delete(`${api}/${userId}`);
+}
+
+export async function activateUser(userId:number, isActive:boolean){
+try {
+    const response = await getUserById(userId);
+    const userToUpdate = response.data; 
+
+    // if (!userToUpdate) {
+    //   console.error('User not found');
+    //   return null;
+    // }
+
+    const updatedUser = { ...userToUpdate, isActive };
+    await updateUser(updatedUser, userId);
+    return updatedUser;
+  } catch (error) {
+    console.error('Error updating user:', error);
+    return null;
+  }
+}
+
+export async function changeUserRole(userId:number, role:string){
+try {
+    const response = await getUserById(userId);
+    const userToUpdate = response.data; 
+
+    // if (!userToUpdate) {
+    //   console.error('User not found');
+    //   return null;
+    // }
+
+    const updatedUser = { ...userToUpdate, role };
+    await updateUser(updatedUser, userId);
+    return updatedUser;
+  } catch (error) {
+    console.error('Error updating user:', error);
+    return null;
+  }
 }

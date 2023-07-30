@@ -23,16 +23,19 @@ const SignIn: FunctionComponent<SignInProps> = ({ setUserInfo, passwordShown, to
       userValidation(values)
         .then((res) => {
           if (res.data.length) {
-            sessionStorage.setItem("userInfo", JSON.stringify({
-              email: values.email, userId: res.data[0].id, role: res.data[0].role,
-            })
-            );
-            setUserInfo(
-              JSON.parse(sessionStorage.getItem("userInfo") as string)
-            );
-            successMsg(`You're signed in as ${values.email}`);
-            navigate("/");
-          } else errorMsg("Wrong Email or Password");
+            if (res.data[0].isActive) {
+              sessionStorage.setItem("userInfo", JSON.stringify({
+                email: values.email, userId: res.data[0].id, role: res.data[0].role,
+              }));
+              setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
+              successMsg(`You're signed in as ${values.email}`);
+              navigate("/");
+            } else {
+              errorMsg("Your User was Deavtivated, please contact System Administrator");
+            }
+          } else {
+            errorMsg("Wrong Email or Password");
+          }
         })
         .catch((err) => console.log(err));
     },

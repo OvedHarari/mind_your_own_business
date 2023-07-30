@@ -15,5 +15,5 @@ export default interface User {
   street?: string;
   houseNumber?: string;
   zipcode?: string;
-  active?: boolean;
+  isActive?: boolean;
 }
