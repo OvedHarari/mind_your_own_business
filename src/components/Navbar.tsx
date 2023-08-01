@@ -38,6 +38,22 @@ const Navbar: FunctionComponent<NavbarProps> = ({
     navigate("/");
     successMsg("See you soon 😉");
   };
+  let defaultProfileImage = () => {
+    switch (userProfile.gender) {
+      case "male":
+        return "images/users_img/user_male.webp"
+      // break;
+      case "female":
+        return "images/users_img/user_female.webp"
+      // break;
+      case "other":
+        return "images/users_img/user_other.jpg"
+      // break;
+
+      default:
+        break;
+    }
+  };
   return (
     <>
       <div>
@@ -128,8 +144,8 @@ const Navbar: FunctionComponent<NavbarProps> = ({
                   <>
                     <button className="btn btn-outline" onClick={signOut}>
                       SignOut
-                    </button>                   
-                    <img src={userProfile ? (`${userProfile.userImgURL}`) : ("")}
+                    </button>
+                    <img src={userProfile.userImgURL ? (`${userProfile.userImgURL}`) : (defaultProfileImage())}
                       className="rounded-circle profileImg" width="50"
                       alt="user profile"
                       onClick={() => {
@@ -150,8 +166,8 @@ const Navbar: FunctionComponent<NavbarProps> = ({
               </form>
             </div>
           </div>
-        </nav>
-      </div>
+        </nav >
+      </div >
 
       <UserProfileModal
         show={userProfileModal}

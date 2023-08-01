@@ -10,6 +10,8 @@ interface BusinessDetailsProps {
     cardId: number;
 }
 
+
+
 const BusinessDetails: FunctionComponent<BusinessDetailsProps> = ({ onHide, render, userInfo,
     cardId
 }) => {
@@ -17,20 +19,20 @@ const BusinessDetails: FunctionComponent<BusinessDetailsProps> = ({ onHide, rend
     useEffect(() => {
         if (cardId) {
             getCardById(cardId).then((res) => setCard(res.data))
-            .catch((err) => console.log(err))
+                .catch((err) => console.log(err))
         }
     }, [cardId]);
 
     return (<>
-        {card && (<>        
-        <div className="row">
-            <div className="col-md-7">
-                {card.description}
+        {card && (<>
+            <div className="row">
+                <div className="col-md-7">
+                    {card.description}
+                </div>
+                <div className="col-md-4 text-end">
+                    <img src={card.businessImgURL} width={300} alt={card.businessImgAlt} />
+                </div>
             </div>
-            <div className="col-md-4 text-end">
-                <img src={card.businessImgURL} width={300} alt={card.businessImgAlt} />
-            </div>
-        </div>
             <div className="row mt-4">
                 <h4 className="text-start">Contact us</h4>
 

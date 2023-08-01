@@ -8,6 +8,7 @@ import DeleteCardModal from "./DeleteCardModal";
 import UpdateCardModal from "./UpdateCardModal";
 import { successMsg } from "../services/feedbacksService";
 import { getCards } from "../services/cardService";
+import BusinessDetailsModal from "./BusinessDetailsModal";
 
 interface FavoritesProps {
   setUserInfo: Function;
@@ -19,6 +20,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
   let [openNewCardModal, setOpenNewCardModal] = useState<boolean>(false);
   let [openDeleteCardModal, setOpenDeleteCardModal] = useState<boolean>(false);
   let [openUpdateCardModal, setOpenUpdateCardModal] = useState<boolean>(false);
+  let [openBusinessDetailsModal, setOpenBusinessDetailsModal] = useState<boolean>(false);
   let [cardId, setCardId] = useState<number>(0);
   let [cardTitle, setCardTitle] = useState<string>("");
   let [dataUpdated, setDataUpdated] = useState<boolean>(false);
@@ -30,14 +32,17 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
         .then((res) => {
           setFavorites(favorites.filter((id) => id !== card.id));
           successMsg(`${card.title} business card was removed from favorites!`);
-          render() })
+          render()
+        })
         .catch((err) => { console.log(err); });
     } else {
       addToFavorites(userInfo.userId, card)
         .then((res) => {
           setFavorites([...favorites, card.id as number]);
-          successMsg(`${card.title} business card was added to favorites!`); })
-        .catch((err) => { console.log(err); });    }
+          successMsg(`${card.title} business card was added to favorites!`);
+        })
+        .catch((err) => { console.log(err); });
+    }
   };
   useEffect(() => {
     getFavorites(userInfo.userId).then((res) => {
@@ -53,7 +58,7 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
     }).catch((err) => console.log(err));
   }, [favorites]);
 
-return (
+  return (
     <div className={`container mt-3 bCard ${theme}`}>
       <h1 className="display-1  fw-bold">
         <img
@@ -72,7 +77,7 @@ return (
             onClick={() => setOpenNewCardModal(true)}          >
             <i className="fa-solid fa-plus fs-1 fw-normal"></i>
           </Link>
-          )}
+        )}
       </div>
       {cards.length ? (
         <div className="container">
@@ -82,11 +87,18 @@ return (
                 key={card.id}
                 className="card col-md-4 mx-3 mt-4 shadow"
                 style={{ width: "18rem" }} >
-                <img
-                  src={card.businessImgURL}
-                  className="card-img-top mt-2"
-                  alt={card.businessImgAlt}
-                  style={{ width: "16.5rem", height: "16.5rem" }} />
+                <div className="cardImgDiv mt-3 rounded-3">
+                  <img
+                    src={card.businessImgURL}
+                    className="card-img-top cardImg"
+                    alt={card.businessImgAlt}
+                    style={{ width: "16.5rem", height: "16.5rem" }}
+                    onClick={() => {
+                      setCardId(card.id as number);
+                      setCardTitle(card.title);
+                      setOpenBusinessDetailsModal(true);
+                    }} />
+                </div>
                 <div className="card-body">
                   <h6 className="card-subtitle mb-2 text-muted">
                     {card.title}
@@ -112,7 +124,8 @@ return (
                               onClick={() => {
                                 setCardId(card.id as number);
                                 setCardTitle(card.title);
-                                setOpenUpdateCardModal(true); }} >
+                                setOpenUpdateCardModal(true);
+                              }} >
                               <i className="fa-solid fa-pen-to-square"></i>
                             </Link>
                           </div>
@@ -144,7 +157,7 @@ return (
         </div>
       ) : (
         <div className="mt-5"><p className="fs-4">You havn't selected any favorites yet.</p></div>
-)}
+      )}
       <NewCardModal
         show={openNewCardModal}
         onHide={() => setOpenNewCardModal(false)}
@@ -161,6 +174,14 @@ return (
       <UpdateCardModal
         show={openUpdateCardModal}
         onHide={() => setOpenUpdateCardModal(false)}
+        render={render}
+        cardId={cardId}
+        cardTitle={cardTitle}
+        userInfo={userInfo}
+      />
+      <BusinessDetailsModal
+        show={openBusinessDetailsModal}
+        onHide={() => setOpenBusinessDetailsModal(false)}
         render={render}
         cardId={cardId}
         cardTitle={cardTitle}

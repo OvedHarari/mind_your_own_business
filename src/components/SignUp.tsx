@@ -207,6 +207,8 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
               SignUp as Business !!!
             </label>
             {formik.touched.role && formik.errors.role && (<p className="text-danger">{formik.errors.role}</p>)}
+
+            {/* <input type="file" alt="Submit" /> */}
           </div>
         </div>
         <button className="btn btn-secondary w-100 mt-3" type="submit">SignUp</button>

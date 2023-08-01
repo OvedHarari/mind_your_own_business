@@ -8,6 +8,7 @@ interface LockUserModalProps {
   show: boolean;
   onHide: Function;
   render: Function;
+  userProfile: any;
   userId: number;
   userFirstName: number;
   userLastName: number;
@@ -18,6 +19,7 @@ const LockUserModal: FunctionComponent<LockUserModalProps> = ({
   show,
   onHide,
   render,
+  userProfile,
   userId,
   userFirstName,
   userLastName,
@@ -39,8 +41,8 @@ const LockUserModal: FunctionComponent<LockUserModalProps> = ({
         </Modal.Header>
         <Modal.Body>
           {isActive ? (<p>Are you sure you want to LOCK
-            <span className="fw-bold"> "{userFirstName} {userLastName}"</span> ?</p>) : (<p>Are you sure you want to UNLOCK
-              <span className="fw-bold"> "{userFirstName} {userLastName}"</span> ?</p>)}
+            <span className="fw-bold"> "{userProfile.firstName} {userProfile.lastName}"</span> ?</p>) : (<p>Are you sure you want to UNLOCK
+              <span className="fw-bold"> "{userProfile.firstName} {userProfile.lastName}"</span> ?</p>)}
 
         </Modal.Body>
         <Modal.Footer>
@@ -51,7 +53,7 @@ const LockUserModal: FunctionComponent<LockUserModalProps> = ({
                 .then((res) => {
                   render();
                   onHide();
-                  isActive ? (successMsg(`User ${userFirstName} ${userLastName} was LOCKED !`)) : (successMsg(`User ${userFirstName} ${userLastName} is now UNLOCKED!`))
+                  isActive ? (successMsg(`User ${userProfile.firstName} ${userProfile.lastName} was LOCKED !`)) : (successMsg(`User ${userProfile.firstName} ${userProfile.lastName} is now UNLOCKED!`))
 
                 })
                 .catch((err) => console.log(err))}>Yes</Button>

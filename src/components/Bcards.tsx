@@ -39,9 +39,11 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
       addToFavorites(userInfo.userId, card)
         .then((res) => {
           setFavorites([...favorites, card.id as number]);
-          successMsg(`${card.title} business card was added to favorites!`); })
+          successMsg(`${card.title} business card was added to favorites!`);
+        })
         .catch((err) => { console.log(err); });
-    }};
+    }
+  };
   useEffect(() => {
     getFavorites(userInfo.userId).then((res) => {
       let userFavorites = res.data.find((fav: any) => fav.userId === userInfo.userId);
@@ -82,17 +84,19 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
                 key={card.id}
                 className="card col-md-4 mx-3 mt-4 shadow"
                 style={{ width: "18rem" }}  >
-                <img
-                  src={card.businessImgURL}
-                  className="card-img-top mt-2"
-                  alt={card.businessImgAlt}
-                  style={{ width: "16.5rem", height: "16.5rem" }}
-                  onClick={() => {
-                    setCardId(card.id as number);
-                    setCardTitle(card.title);
-                    setOpenBusinessDetailsModal(true);
-                  }}
-                />
+                <div className="cardImgDiv mt-3 rounded-3">
+                  <img
+                    src={card.businessImgURL}
+                    className="card-img-top cardImg "
+                    alt={card.businessImgAlt}
+                    style={{ width: "16.5rem", height: "16.5rem" }}
+                    onClick={() => {
+                      setCardId(card.id as number);
+                      setCardTitle(card.title);
+                      setOpenBusinessDetailsModal(true);
+                    }}
+                  />
+                </div>
                 <div className="card-body">
                   <h6 className="card-subtitle mb-2 text-muted">
                     {card.title}
@@ -127,8 +131,8 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
                             >
                               <i className="fa-solid fa-pen-to-square"></i>
                             </Link>
-                          </div> 
-                          )}
+                          </div>
+                        )}
                       <div className="col right-icons text-end">
                         <Link
                           to={`tel:${card.phone}`}

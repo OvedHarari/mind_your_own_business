@@ -48,12 +48,12 @@ const UsersManagement: FunctionComponent<UsersManagementProps> = ({ darkMode, re
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
               <th scope="col">Email</th>
               <th scope="col">Role</th>
               <th scope="col">Edit</th>
-              <th scope="col">Locked</th>
+              <th scope="col">Blocked</th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
@@ -133,6 +133,7 @@ const UsersManagement: FunctionComponent<UsersManagementProps> = ({ darkMode, re
       show={openLockUserModal}
       onHide={() => setOpenLockUserModal(false)}
       render={render}
+      userProfile={userProfile}
       userId={userProfile.id}
       userFirstName={userProfile.firstName}
       userLastName={userProfile.lastName}

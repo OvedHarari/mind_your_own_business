@@ -9,6 +9,7 @@ interface ChangeRoleModalProps {
   onHide: Function;
   render: Function;
   userProfile: any;
+
 }
 
 const ChangeRoleModal: FunctionComponent<ChangeRoleModalProps> = ({
@@ -38,7 +39,7 @@ const ChangeRoleModal: FunctionComponent<ChangeRoleModalProps> = ({
         <Modal.Body>
           <select className="form-select form-select-sm" style={{ width: "10rem" }} aria-label="Small select example" value={selectedRole}
             onChange={handleRoleChange} >
-            <option value={userProfile.role}>{userProfile.role}</option>
+            {/* <option value={userProfile.role}>{userProfile.role}</option> */}
             <option value="casual">Casual</option>
             <option value="business">Business</option>
             <option value="Admin">Admin</option>
@@ -52,7 +53,7 @@ const ChangeRoleModal: FunctionComponent<ChangeRoleModalProps> = ({
                 .then((res) => {
                   render();
                   onHide();
-                  successMsg(`${userProfile.userFirstName} ${userProfile.userLastName} is now ${userProfile.role}`)
+                  successMsg(`${userProfile.firstName} ${userProfile.lastName} is now ${selectedRole}`)
                 })
                 .catch((err) => console.log(err))}>Save</Button>
           <Button variant="secondary" onClick={() => onHide()}>
