@@ -4,7 +4,6 @@ import User from "../interfaces/User";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { successMsg } from "../services/feedbacksService";
-import { userInfo } from "os";
 
 interface UserProfileProps {
   userInfo: any;
@@ -29,16 +28,8 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
     }),
     enableReinitialize: true,
     onSubmit(values: User) {
-      // const storedUserInfo = JSON.parse(sessionStorage.getItem("userInfo") as string)
       updateUser(values, userProfile.id)
         .then((res) => {
-          ///to handle on Admin user management update - if localStorage is not changed user!!!!!!!!!!!!!!!!!!!!
-          // if (userProfile.email === storedUserInfo?.email) {
-          //   sessionStorage.setItem("userInfo", JSON.stringify({ email: res.data.email, userId: res.data.id, role: res.data.role }));
-          //   setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
-          // }
-          // sessionStorage.setItem("userInfo", JSON.stringify({ email: res.data.email, userId: res.data.id, role: res.data.role }));
-          // setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
           setEditForm(true)
           onHide();
           render();
