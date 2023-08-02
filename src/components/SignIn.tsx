@@ -25,7 +25,7 @@ const SignIn: FunctionComponent<SignInProps> = ({ setUserInfo, passwordShown, to
           if (res.data.length) {
             if (res.data[0].isActive) {
               sessionStorage.setItem("userInfo", JSON.stringify({
-                email: values.email, userId: res.data[0].id, role: res.data[0].role,
+                email: values.email, userId: res.data[0].id, role: res.data[0].role, gender: res.data[0].gender
               }));
               setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
               successMsg(`You're signed in as ${values.email}`);

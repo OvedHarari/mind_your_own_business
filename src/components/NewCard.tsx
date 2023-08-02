@@ -15,7 +15,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
   let theme = useContext(SiteTheme);
   let formik = useFormik({
     initialValues: {
-      title: "", subtitle: "", description: "", phone: "", email: "", webSite: "", businessImgURL: "", businessImgAlt: "", country: "", state: "", city: "", street: "", houseNumber: "", zipcode: "", owner: `${userInfo.email}`, isFavorite: false
+      title: "", subtitle: "", description: "", phone: "", email: "", webSite: "", businessImgURL: "", businessImgAlt: "", country: "", state: "", city: "", street: "", houseNumber: "", zipcode: "", owner: `${userInfo.email}`
     },
     validationSchema: yup.object({
       title: yup.string().required().min(2), subtitle: yup.string().required().min(2), description: yup.string().required().min(20),

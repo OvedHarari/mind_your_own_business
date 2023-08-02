@@ -31,12 +31,11 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
       street: "",
       houseNumber: "",
       zipcode: "",
-      isFavorite: false,
     })
   let formik = useFormik({
     initialValues: {
       title: card.title, subtitle: card.subtitle, description: card.description, phone: card.phone, email: card.email, webSite: card.webSite, businessImgURL: card.businessImgURL, businessImgAlt: card.businessImgAlt,
-      country: card.country, state: card.state, city: card.city, street: card.street, houseNumber: card.houseNumber, zipcode: card.zipcode, owner: `${userInfo.email}`, isFavorite: false
+      country: card.country, state: card.state, city: card.city, street: card.street, houseNumber: card.houseNumber, zipcode: card.zipcode, owner: `${userInfo.email}`
     },
     validationSchema: yup.object({
       title: yup.string().required().min(2), subtitle: yup.string().required().min(2), description: yup.string().required().min(20),

@@ -28,7 +28,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
       addUser(values)
         .then((res) => {
           navigate("/");
-          sessionStorage.setItem("userInfo", JSON.stringify({ email: res.data.email, userId: res.data.id, role: res.data.role }));
+          sessionStorage.setItem("userInfo", JSON.stringify({ email: res.data.email, userId: res.data.id, role: res.data.role, gender: res.data.gender }));
           setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
           createFavoritsById(res.data.id)
           successMsg(`${values.email} was registered and logged in`);

@@ -1,4 +1,4 @@
-import { FunctionComponent, useContext, useState } from "react";
+import { FunctionComponent, useCallback, useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { SiteTheme } from "../App";
 import { successMsg } from "../services/feedbacksService";
@@ -38,22 +38,24 @@ const Navbar: FunctionComponent<NavbarProps> = ({
     navigate("/");
     successMsg("See you soon 😉");
   };
-  let defaultProfileImage = () => {
-    switch (userProfile.gender) {
-      case "male":
-        return "images/users_img/user_male.webp"
-      // break;
-      case "female":
-        return "images/users_img/user_female.webp"
-      // break;
-      case "other":
-        return "images/users_img/user_other.jpg"
-      // break;
-
-      default:
-        break;
+  const defaultProfileImage = () => {
+    if (userProfile && userProfile.gender) {
+      switch (userProfile.gender) {
+        case "male":
+          return "images/users_img/user_male.webp";
+        case "female":
+          return "images/users_img/user_female.webp";
+        case "other":
+          return "images/users_img/user_other.jpg";
+        default:
+          break;
+      }
     }
+    return "images/users_img/user_male.webp";
   };
+
+
+
   return (
     <>
       <div>
@@ -145,7 +147,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
                     <button className="btn btn-outline" onClick={signOut}>
                       SignOut
                     </button>
-                    <img src={userProfile.userImgURL ? (`${userProfile.userImgURL}`) : (defaultProfileImage())}
+                    <img src={userProfile && userProfile.userImgURL ? (`${userProfile.userImgURL}`) : (defaultProfileImage())}
                       className="rounded-circle profileImg" width="50"
                       alt="user profile"
                       onClick={() => {

@@ -10,7 +10,8 @@ interface BusinessDetailsProps {
     cardId: number;
 }
 
-
+// google API key
+// AIzaSyAiv - KjHLXG1I7W0 - hGFUJNaWjjOmCfaRc
 
 const BusinessDetails: FunctionComponent<BusinessDetailsProps> = ({ onHide, render, userInfo,
     cardId
@@ -44,10 +45,20 @@ const BusinessDetails: FunctionComponent<BusinessDetailsProps> = ({ onHide, rend
                 </div>
                 <div className="col-md-7">
                     {/* <BusinessMap /> */}
+                    {/* <iframe
+                        width="600"
+                        height="450"
+                        style={{ border: "0" }}
+                        loading="lazy"
+                        allowfullscreen?: true
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDpAJ0bXQXZAA_43355PXchAjrzEwCAhyk&q=${capitalCity}">
+                </iframe> */}
                 </div>
             </div>
         </>
-        )}
+        )
+        }
     </>);
 }
 
