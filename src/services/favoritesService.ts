@@ -9,6 +9,10 @@ export function createFavoritsById(userId: number){
     return axios.post(api, {userId, cards:[]});
 }
 
+export function deleteFavoritsById(userId: number) {
+  return axios.delete(`${api}/${userId}`);
+}
+
 // get all user's favorits cards
 export function getFavorites(userId: number){
     return axios.get(`${api}?userId=${userId}`)

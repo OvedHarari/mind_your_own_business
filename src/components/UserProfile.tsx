@@ -43,7 +43,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
       <div className="col-md-4">
       </div>
       <div className="container">
-        <form className="form-floating mb-3 mt-3" onSubmit={formik.handleSubmit}>
+        <form className="form-floating  mt-3" onSubmit={formik.handleSubmit}>
           <h6 className=" mt-4 text-start">General</h6>
           <div className="row g-2 border rounded-4 border-secondary mt-1">
             <div className="form-floating col-6 mb-3 mt-3">

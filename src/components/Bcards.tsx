@@ -59,8 +59,8 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
         <img
           src="/mindYourOwnBusiness_LOGO.png"
           alt="Mind Your Own Business logo"
-          width="55"
-          height="49"
+          width="70"
+          height="64"
         ></img>
         Mind Your Own Business
       </h1>

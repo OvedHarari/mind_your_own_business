@@ -114,33 +114,22 @@ const Navbar: FunctionComponent<NavbarProps> = ({
                 <div className="container">
                   <div className="row justify-content-center mt-1">
                     <div className="col-md-12">
-                      <div className="search-bar">
+                      {/* <div className="search-bar">
                         <input
                           type="text"
                           className="form-control"
                           placeholder="Search..."
                         />
                         <i className="search-icon fa-solid fa-magnifying-glass"></i>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
-                <div className="form-check form-switch">
-                  <input
-                    className="form-check-input mt-3"
-                    type="checkbox"
-                    role="switch"
-                    id="flexSwitchCheckDefault"
-                    onChange={() => {
-                      setDarkMode(!darkMode);
-                      localStorage.setItem("darkMode", JSON.stringify(!darkMode));
-                    }}
-                    checked={JSON.parse(localStorage.getItem("darkMode")!)}
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexSwitchCheckDefault"
-                  ></label>
+                <div className="mt-2 me-3 fs-4" onClick={() => {
+                  setDarkMode(!darkMode);
+                  localStorage.setItem("darkMode", JSON.stringify(!darkMode));
+                }}>
+                  {darkMode ? (<i className="fa-solid fa-moon"></i>) : (<i className="fa-solid fa-sun"></i>)}
                 </div>
                 {userInfo.email && (
                   <>
@@ -158,10 +147,10 @@ const Navbar: FunctionComponent<NavbarProps> = ({
                 )}
                 {!userInfo.email && (
                   <>
-                    <Link to="/signup" className="btn btn-outline">
+                    <Link to="/signup" className="btn btn-outline mt-1">
                       SignUp
                     </Link>
-                    <Link to="/signin" className="btn btn-outline">
+                    <Link to="/signin" className="btn btn-outline mt-1">
                       SignIn
                     </Link>
                   </>)}

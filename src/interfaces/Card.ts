@@ -1,6 +1,6 @@
 export default interface Card {
   id?: number;
-  owner?: number | string;
+  owner?: string;
   title: string;
   subtitle?: string;
   description: string;

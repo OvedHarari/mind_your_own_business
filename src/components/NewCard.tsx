@@ -188,11 +188,12 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
             <p className="text-danger">{formik.errors.zipcode}</p>)}
         </div>
       </div>
-      <div className="row">
-        <div className="col-6"><button className="btn btn-secondary w-100 mt-3" onClick={() => onHide()}>Cancel</button></div>
-        <div className="col-6"><button className="btn btn-secondary w-100 mt-3" onClick={() => formik.resetForm()}>Clear Form</button></div>
-      </div>
       <button className="btn btn-secondary w-100 mt-3" type="submit">Create Card</button>
+      <div className="row">
+        <div className="col-6"><button className="btn btn-danger w-100 mt-3" onClick={() => onHide()}>Cancel</button></div>
+        <div className="col-6"><button className="btn btn-danger w-100 mt-3" onClick={() => formik.resetForm()}>Clear Form</button></div>
+      </div>
+
     </form>
   </div>);
 }

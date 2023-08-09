@@ -15,5 +15,7 @@ export default interface User {
   street?: string;
   houseNumber?: string;
   zipcode?: string;
+  lat?:number;
+  lng?:number
   isActive?: boolean;
 }

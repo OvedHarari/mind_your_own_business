@@ -2,8 +2,8 @@ import { useFormik } from "formik";
 import { FunctionComponent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { addUser } from "../services/usersService";
-import { successMsg } from "../services/feedbacksService";
+import { addUser, getAllUsers } from "../services/usersService";
+import { errorMsg, successMsg } from "../services/feedbacksService";
 import User from "../interfaces/User";
 import { createFavoritsById } from "../services/favoritesService";
 
@@ -14,6 +14,12 @@ interface SignUpProps {
 }
 const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, togglePassword }) => {
   let navigate = useNavigate();
+  const checkEmail = (serverUsers: any, formData: any) => {
+    const user = serverUsers.find((user: { email: any; }) => user.email === formData.email);
+    if (user) return user;
+  };
+
+
   let formik = useFormik({
     initialValues: {
       firstName: "", middleName: "", lastName: "", phone: "", email: "", password: "", gender: "", userImgURL: "",
@@ -24,18 +30,36 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
       firstName: yup.string().required().min(2), middleName: yup.string().min(2), lastName: yup.string().required().min(2),
       phone: yup.string().required().min(2), email: yup.string().required().email(), password: yup.string().required().min(8).matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%#^*?&]{8,}$/, "Password must contain at least 1 uppercase letter, lowercase letter, digit and special character (@$!%*?&#^)"), gender: yup.string().required(), userImgURL: yup.string().min(2), country: yup.string().required().min(2), state: yup.string().min(2), city: yup.string().required().min(2), street: yup.string().required().min(2), houseNumber: yup.string().required().min(2), zipcode: yup.string().min(2), role: yup.string().min(2),
     }),
-    onSubmit(values: User) {
-      addUser(values)
-        .then((res) => {
-          navigate("/");
-          sessionStorage.setItem("userInfo", JSON.stringify({ email: res.data.email, userId: res.data.id, role: res.data.role, gender: res.data.gender }));
-          setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
-          createFavoritsById(res.data.id)
-          successMsg(`${values.email} was registered and logged in`);
-        })
-        .catch((err) => console.log(err));
+    onSubmit: async (values: User) => {
+
+      const user = await getAllUsers().then((res) => checkEmail(res.data, values)).catch((err) => console.log((err))
+      );
+      if (user) errorMsg("The email you are trying to signup is ALREADY SIGNED UP!!")
+      else {
+        addUser(values)
+          .then((res) => {
+            navigate("/");
+            sessionStorage.setItem("userInfo", JSON.stringify({ email: res.data.email, userId: res.data.id, role: res.data.role, gender: res.data.gender }));
+            setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
+            createFavoritsById(res.data.id)
+            successMsg(`${values.email} was registered and logged in`);
+          })
+          .catch((err) => console.log(err));
+      }
     },
   });
+  //   onSubmit(values: User) {
+  //     addUser(values)
+  //       .then((res) => {
+  //         navigate("/");
+  //         sessionStorage.setItem("userInfo", JSON.stringify({ email: res.data.email, userId: res.data.id, role: res.data.role, gender: res.data.gender }));
+  //         setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
+  //         createFavoritsById(res.data.id)
+  //         successMsg(`${values.email} was registered and logged in`);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   },
+  // });
   return (
     <div className="container mt-5">
       <form className="form-floating signup mb-3 mt-3" onSubmit={formik.handleSubmit}>

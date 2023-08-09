@@ -35,7 +35,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
   let formik = useFormik({
     initialValues: {
       title: card.title, subtitle: card.subtitle, description: card.description, phone: card.phone, email: card.email, webSite: card.webSite, businessImgURL: card.businessImgURL, businessImgAlt: card.businessImgAlt,
-      country: card.country, state: card.state, city: card.city, street: card.street, houseNumber: card.houseNumber, zipcode: card.zipcode, owner: `${userInfo.email}`
+      country: card.country, state: card.state, city: card.city, street: card.street, houseNumber: card.houseNumber, zipcode: card.zipcode, owner: card.owner
     },
     validationSchema: yup.object({
       title: yup.string().required().min(2), subtitle: yup.string().required().min(2), description: yup.string().required().min(20),
@@ -56,7 +56,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
   }, [cardId]);
 
   return (<div className={`container ${theme}`}  >
-    <form className="form-floating mb-3 mt-3" onSubmit={formik.handleSubmit}>
+    <form className="form-floating mt-3" onSubmit={formik.handleSubmit}>
       <h6 className=" mt-4 ">General</h6>
       <div className="row g-2 border rounded-4 border-secondary mt-1">
         <div className="form-floating col-6 mb-3 mt-3">
@@ -212,9 +212,12 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
         </div>
       </div>
       <button className="btn btn-secondary w-100 mt-3" type="submit">Update Card</button>
-      <div className="row mt-3">
-        <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => onHide()}>Cancel</button></div>
-        <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => formik.resetForm()}>Clear Form</button></div>
+      <div className="row">
+        <div className="col-6">
+          <button className="btn btn-danger mt-3" onClick={() => onHide()}>Close Without Saving</button>
+        </div>
+        {/* <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => onHide()}>Cancel</button></div> */}
+        {/* <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => formik.resetForm()}>Clear Form</button></div> */}
       </div>
     </form>
   </div>);

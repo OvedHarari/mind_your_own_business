@@ -12,6 +12,7 @@ import MyCards from "./components/MyCards";
 import Favorites from "./components/Favorites";
 import { getUserByEmail } from "./services/usersService";
 import About from "./components/About";
+import Map from "./components/BusinessMap";
 
 
 const theme = {
@@ -73,7 +74,6 @@ function App() {
             userProfile={userProfile}
             setUserProfile={setUserProfile}
             render={render}
-            // dataUpdated={dataUpdated}
             passwordShown={passwordShown}
             togglePassword={togglePassword}
           />
@@ -85,6 +85,7 @@ function App() {
             <Route path="/mycards" element={<MyCards userInfo={userInfo} />} />
             <Route path="/favorites" element={<Favorites setUserInfo={setUserInfo} userInfo={userInfo} />} />
             <Route path="/about" element={<About userInfo={userInfo} />} />
+            <Route path="/map" element={<Map />} />
             <Route path="/usersmanagement" element={<UsersManagement darkMode={darkMode} render={render} setUserInfo={setUserInfo} userProfile={userProfile} setUserProfile={setUserProfile} passwordShown={passwordShown} togglePassword={togglePassword} userInfo={userInfo} dataUpdated={dataUpdated} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

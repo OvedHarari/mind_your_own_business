@@ -42,7 +42,7 @@ const ChangeRoleModal: FunctionComponent<ChangeRoleModalProps> = ({
             {/* <option value={userProfile.role}>{userProfile.role}</option> */}
             <option value="casual">Casual</option>
             <option value="business">Business</option>
-            <option value="Admin">Admin</option>
+            <option value="admin">Admin</option>
           </select>
         </Modal.Body>
         <Modal.Footer>

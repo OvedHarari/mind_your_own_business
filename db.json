@@ -6,7 +6,7 @@
       "lastName": "User",
       "phone": "054-888XXXX",
       "email": "admin1@test.com",
-      "password": "12345678",
+      "password": "O5o88*2416",
       "gender": "male",
       "userImgURL": "",
       "country": "Israel",
@@ -166,8 +166,6 @@
       "zipcode": "SW1A 1AA"
     },
     {
-      "id": 6,
-      "owner": "ovedhar@gmail.com",
       "title": "Baker's Delight",
       "subtitle": "Artisan Bakery",
       "description": "Baker's Delight is a family-owned artisan bakery known for its freshly baked bread, pastries, and mouthwatering desserts.",
@@ -179,9 +177,11 @@
       "country": "Australia",
       "state": "New South Wales",
       "city": "Sydney",
-      "street": "123 Baker Street",
-      "housNamber": "Shop 5",
-      "zipcode": "2000"
+      "street": "Baker Street",
+      "houseNumber": "123",
+      "zipcode": "2000",
+      "owner": "admin1@test.com",
+      "id": 6
     },
     {
       "id": 7,
@@ -319,8 +319,8 @@
           "description": "TechSmart Electronics is your one-stop shop for the latest gadgets and tech accessories. We offer top-notch customer service and a wide range of cutting-edge products.",
           "phone": "+1 (555) 789-0123",
           "email": "support@techsmart.com",
-          "webSite": "https://www.techsmart.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
+          "webSite": "http://www.techsmart.co.za/",
+          "businessImgURL": "https://s3-media0.fl.yelpcdn.com/bphoto/6ODu4ZPQ5hWkZW7PLKhmeQ/348s.jpg",
           "businessImgAlt": "TechSmart Electronics",
           "country": "United States",
           "state": "Texas",

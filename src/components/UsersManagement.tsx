@@ -80,20 +80,20 @@ const UsersManagement: FunctionComponent<UsersManagementProps> = ({ darkMode, re
                   ></i> </Link>
                 </td>
                 <td>
-                  {user.isActive ? (<i className="fa-solid fa-lock-open text-success"
-                    onClick={() => {
-                      // setOpenLockUserModal(true);
+                  {(user.email === "admin1@test.com" || user.email === userInfo.email) ? (<small>Can't lock this user!</small>) : (
+                    user.isActive ? (<i className="fa-solid fa-lock-open text-success"
+                      onClick={() => {
+                        updateUserProfile(user.email);
+                        setOpenLockUserModal(true)
+                      }}
+                    ></i>) : (<i className="fa-solid fa-lock text-danger" onClick={() => {
                       updateUserProfile(user.email);
-                      setOpenLockUserModal(true)
-                    }}
-                  ></i>) : (<i className="fa-solid fa-lock text-danger" onClick={() => {
-                    // setOpenLockUserModal(true);
-                    updateUserProfile(user.email);
-                    setOpenLockUserModal(true);
-                  }}></i>)}
+                      setOpenLockUserModal(true);
+                    }}></i>)
+                  )}
                 </td>
                 <td>
-                  {user.email === "admin1@test.com" ? (<small>Do not delete!</small>) : (<Link to=""><i
+                  {(user.email === "admin1@test.com" || user.email === userInfo.email) ? (<small>Do not delete!</small>) : (<Link to=""><i
                     className="fa-solid fa-trash text-secondary"
                     onClick={() => {
                       updateUserProfile(user.email);

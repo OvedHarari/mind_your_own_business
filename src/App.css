@@ -1,10 +1,6 @@
 :root {
   --color-primary: #ededed;
-  /* --color-primary: #d6d6d6; */
-  /* --color-primary: #ffffff; */
-  /* --color-primary: #191d2b; */
   --color-secondary: #c2caca88;
-  /* --color-secondary: #157347; */
   --color-modal: #ededed;
   --color-title: #212529;
   --color-white: #ffffff;
@@ -23,16 +19,10 @@
 
 .dark {
   --color-primary: #212529;
-  /* --color-primary: #191d2b; */
   --color-secondary: #586573;
   --color-modal: #414952;
-  /* --color-secondary: #254f79; */
   --color-title: #bfd0e6;
-  /* --color-title: #b2b5b9; */
-  /* --color-title: #a5aaaf; */
-
   --color-white: #cdcecf;
-  /* --color-white: #a5aaaf; */
   --color-black: #000;
   --color-grey0: #f8f8f8;
   --color-grey-1: #6c7983;
@@ -41,7 +31,6 @@
   --color-grey-4: #454e56;
   --color-grey-5: #f8f8f8;
   --color-grey-6: #12181b;
-
   --br-sm-2: 14px;
   --box-shadow-1: 0 3px 15px rgba(0, 0, 0, 0.3);
   --box-shadow-2: 0 2px 5px rgba(248, 248, 248, 0.2);
@@ -63,7 +52,7 @@
 .signin {
   background-color: var(--color-primary);
   color: var(--color-title);
-  
+
 }
 
 .set-modal .modal-content,
@@ -86,6 +75,16 @@ form {
   .form-control:placeholder-shown~label {
     color: var(--color-title);
   }
+
+  .form-select:not(:placeholder-shown)~label::after,
+  .form-select~label::after {
+    background-color: var(--color-secondary);
+  }
+
+  .form-select:not(:placeholder-shown)~label,
+  .form-select:placeholder-shown~label {
+    color: var(--color-title);
+  }
 }
 
 
@@ -94,19 +93,20 @@ form {
   color: var(--color-title);
 }
 
-.cardImgDiv{
+.cardImgDiv {
   overflow: hidden;
+
   .cardImg {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      -webkit-transition: .3s ease-in-out;
-      transition: .3s ease-in-out;
-  
-      &&:hover {
-        -webkit-transform: scale(1.3);
-        transform: scale(1.3);
-      }
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+
+    &&:hover {
+      -webkit-transform: scale(1.3);
+      transform: scale(1.3);
     }
+  }
 }
 
 .cardIcons {
@@ -144,4 +144,11 @@ form {
   &&:hover {
     opacity: 0.3;
   }
+}
+
+.map-container {
+  /* width: 100vw;
+  height: 100vh; */
+  width: 500px;
+  height: 350px;
 }

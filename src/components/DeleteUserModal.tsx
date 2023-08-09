@@ -3,6 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import { successMsg } from "../services/feedbacksService";
 import { SiteTheme } from "../App";
 import { deleteUserById } from "../services/usersService";
+import { deleteFavoritsById } from "../services/favoritesService";
 
 interface DeleteUserModalProps {
   show: boolean;
