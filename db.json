@@ -94,12 +94,13 @@
       "houseNumber": "123 ",
       "zipcode": "90001",
       "owner": "admin1@test.com",
+      "lat": 33.9977319,
+      "lng": -118.4793155,
       "id": 1
     },
     {
-      "id": 2,
-      "owner": "business1@test.com",
       "title": "Emily's Art Gallery",
+      "subtitle": "Come and see",
       "description": "Emily's Art Gallery showcases contemporary artworks from talented artists across the globe. We offer a diverse collection of paintings, sculptures, and other artistic creations.",
       "phone": "+1 (555) 987-6543",
       "email": "contact@emilysgallery.com",
@@ -109,14 +110,17 @@
       "country": "United States",
       "state": "New York",
       "city": "New York City",
-      "street": "456 Art Avenue",
-      "housNamber": "Floor 3",
-      "zipcode": "10001"
+      "street": "Art Avenue",
+      "houseNumber": "456 ",
+      "zipcode": "10001",
+      "owner": "business1@test.com",
+      "lat": 40.7127753,
+      "lng": -74.0059728,
+      "id": 2
     },
     {
-      "id": 3,
-      "owner": "business1@test.com",
       "title": "TechSmart Electronics",
+      "subtitle": "What ever you're looking for",
       "description": "TechSmart Electronics is your one-stop shop for the latest gadgets and tech accessories. We offer top-notch customer service and a wide range of cutting-edge products.",
       "phone": "+1 (555) 789-0123",
       "email": "support@techsmart.com",
@@ -126,9 +130,13 @@
       "country": "United States",
       "state": "Texas",
       "city": "Houston",
-      "street": "789 Tech Boulevard",
-      "housNamber": "Unit 5",
-      "zipcode": "77001"
+      "street": "Tech Boulevard",
+      "houseNumber": "789",
+      "zipcode": "77001",
+      "owner": "business1@test.com",
+      "lat": 29.7604267,
+      "lng": -95.3698028,
+      "id": 3
     },
     {
       "title": "Nature's Bounty",
@@ -142,16 +150,17 @@
       "country": "Canada",
       "state": "Ontario",
       "city": "Toronto",
-      "street": "789 Green Avenue",
-      "houseNumber": "13",
+      "street": "Green Avenue",
+      "houseNumber": "789",
       "zipcode": "M5V 2N8",
       "owner": "business1@test.com",
+      "lat": 43.6889917,
+      "lng": -79.4130988,
       "id": 4
     },
     {
-      "id": 5,
-      "owner": "business1@test.com",
       "title": "FitZone Gym",
+      "subtitle": "Do it for your self !",
       "description": "FitZone Gym is a state-of-the-art fitness facility that offers personalized training programs and modern workout equipment.",
       "phone": "+1 (555) 345-6789",
       "email": "info@fitzonegym.com",
@@ -161,9 +170,13 @@
       "country": "United Kingdom",
       "state": "England",
       "city": "London",
-      "street": "456 Fitness Street",
-      "housNamber": "Floor 2",
-      "zipcode": "SW1A 1AA"
+      "street": "Cherrydown Ave",
+      "houseNumber": "117",
+      "zipcode": "SW1A 1AA",
+      "owner": "business1@test.com",
+      "lat": 51.6203594,
+      "lng": -0.0225743,
+      "id": 5
     },
     {
       "title": "Baker's Delight",
@@ -181,11 +194,11 @@
       "houseNumber": "123",
       "zipcode": "2000",
       "owner": "admin1@test.com",
+      "lat": -33.9448376,
+      "lng": 151.2160121,
       "id": 6
     },
     {
-      "id": 7,
-      "owner": "ovedhar@gmail.com",
       "title": "Pet Paradise",
       "subtitle": "Pet Care & Accessories",
       "description": "Pet Paradise is a haven for pet owners, offering high-quality pet care products and accessories for dogs, cats, and other furry friends.",
@@ -197,14 +210,17 @@
       "country": "Canada",
       "state": "British Columbia",
       "city": "Vancouver",
-      "street": "789 Pet Lane",
-      "housNamber": "Suite 20",
-      "zipcode": "V6C 1A1"
+      "street": "Pet Lane",
+      "houseNumber": "789",
+      "zipcode": "V6C 1A1",
+      "owner": "ovedhar@gmail.com",
+      "lat": 49.2827291,
+      "lng": -123.1207375,
+      "id": 7
     },
     {
-      "id": 8,
-      "owner": "ovedhar@gmail.com",
       "title": "GreenThumb Nursery",
+      "subtitle": "It is all about you !",
       "description": "GreenThumb Nursery is your go-to destination for a wide range of plants, flowers, and gardening supplies. Our knowledgeable staff can assist with all your gardening needs.",
       "phone": "+1 (555) 789-2345",
       "email": "info@greenthumbnursery.com",
@@ -214,14 +230,17 @@
       "country": "United States",
       "state": "Florida",
       "city": "Miami",
-      "street": "456 Garden Road",
-      "housNamber": "Unit 8",
-      "zipcode": "33101"
+      "street": "Garden Road",
+      "houseNumber": "456 ",
+      "zipcode": "33101",
+      "owner": "ovedhar@gmail.com",
+      "lat": 25.9808128,
+      "lng": -80.2019383,
+      "id": 8
     },
     {
-      "id": 9,
-      "owner": "ovedhar@gmail.com",
       "title": "Adventure Seekers",
+      "subtitle": "Let's explore together !",
       "description": "Adventure Seekers offers thrilling outdoor adventure tours and activities, including hiking, rock climbing, and camping.",
       "phone": "+1 (555) 234-5678",
       "email": "info@adventureseekers.com",
@@ -232,12 +251,14 @@
       "state": "Queensland",
       "city": "Brisbane",
       "street": "123 Adventure Avenue",
-      "housNamber": "Suite 15",
-      "zipcode": "4000"
+      "houseNumber": "Suite 15",
+      "zipcode": "4000",
+      "owner": "ovedhar@gmail.com",
+      "lat": -27.4704528,
+      "lng": 153.0260341,
+      "id": 9
     },
     {
-      "id": 10,
-      "owner": "ovedhar@gmail.com",
       "title": "Bookworm Haven",
       "subtitle": "Independent Bookstore",
       "description": "Bookworm Haven is a charming independent bookstore with a carefully curated selection of books, cozy reading nooks, and regular author events.",
@@ -249,9 +270,33 @@
       "country": "United Kingdom",
       "state": "Scotland",
       "city": "Edinburgh",
-      "street": "789 Literary Lane",
-      "housNamber": "Floor 1",
-      "zipcode": "EH1 1DH"
+      "street": "Literary Lane",
+      "houseNumber": "789 ",
+      "zipcode": "EH1 1DH",
+      "owner": "ovedhar@gmail.com",
+      "lat": 55.953252,
+      "lng": -3.188267,
+      "id": 10
+    },
+    {
+      "title": "gffdfghhgfd",
+      "subtitle": "fghdgfdhgfhfg",
+      "description": "The Microsoft new headphones with high quality",
+      "phone": "+972508882416",
+      "email": "ovedhar@gmail.com",
+      "webSite": "gfhgfhhgfddfh",
+      "businessImgURL": "",
+      "businessImgAlt": "",
+      "country": "Israel",
+      "state": "",
+      "city": "Rosh Haain",
+      "street": "Salit",
+      "houseNumber": "12",
+      "zipcode": "4485100",
+      "owner": "admin1@test.com",
+      "lat": 32.1007269,
+      "lng": 34.9627397,
+      "id": 11
     }
   ],
   "favorites": [
@@ -259,24 +304,6 @@
       "id": 1,
       "userId": 1,
       "cards": [
-        {
-          "id": 4,
-          "owner": "business1@test.com",
-          "title": "Nature's Bounty",
-          "subtitle": "Organic Grocery Store",
-          "description": "Nature's Bounty offers a wide selection of organic and locally sourced groceries. We are committed to promoting sustainable and healthy living.",
-          "phone": "+1 (555) 234-5678",
-          "email": "info@naturesbounty.com",
-          "webSite": "https://www.naturesbounty.com",
-          "businessImgURL": "https://blog.at-home.co.in/wp-content/uploads/2015/02/bookworm.png",
-          "businessImgAlt": "Nature's Bounty",
-          "country": "Canada",
-          "state": "Ontario",
-          "city": "Toronto",
-          "street": "789 Green Avenue",
-          "housNamber": "Shop 10",
-          "zipcode": "M5V 2N8"
-        },
         {
           "id": 2,
           "owner": "business1@test.com",
@@ -291,8 +318,10 @@
           "state": "New York",
           "city": "New York City",
           "street": "456 Art Avenue",
-          "housNamber": "Floor 3",
-          "zipcode": "10001"
+          "houseNumber": "Floor 3",
+          "zipcode": "10001",
+          "lat": "",
+          "lng": ""
         },
         {
           "title": "Doe's Cafe",
@@ -310,7 +339,9 @@
           "houseNumber": "123 ",
           "zipcode": "90001",
           "owner": "business1@test.com",
-          "id": 1
+          "id": 1,
+          "lat": "",
+          "lng": ""
         },
         {
           "id": 3,
@@ -326,8 +357,30 @@
           "state": "Texas",
           "city": "Houston",
           "street": "789 Tech Boulevard",
-          "housNamber": "Unit 5",
-          "zipcode": "77001"
+          "houseNumber": "Unit 5",
+          "zipcode": "77001",
+          "lat": "",
+          "lng": ""
+        },
+        {
+          "title": "Nature's Bounty",
+          "subtitle": "Organic Grocery Store",
+          "description": "Nature's Bounty offers a wide selection of organic and locally sourced groceries. We are committed to promoting sustainable and healthy living.",
+          "phone": "+1 (555) 234-5678",
+          "email": "info@naturesbounty.com",
+          "webSite": "https://www.naturesbounty.com",
+          "businessImgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrAN7kIgR65kUAtP-Xz5fhZQvxj7tTb3OiHw&usqp=CAU",
+          "businessImgAlt": "Nature's Bounty",
+          "country": "Canada",
+          "state": "Ontario",
+          "city": "Toronto",
+          "street": "789 Green Avenue",
+          "houseNumber": "13",
+          "zipcode": "M5V 2N8",
+          "owner": "business1@test.com",
+          "id": 4,
+          "lat": "",
+          "lng": ""
         }
       ]
     },
@@ -351,7 +404,9 @@
           "houseNumber": "13",
           "zipcode": "M5V 2N8",
           "owner": "business1@test.com",
-          "id": 4
+          "id": 4,
+          "lat": "",
+          "lng": ""
         },
         {
           "id": 3,
@@ -367,8 +422,10 @@
           "state": "Texas",
           "city": "Houston",
           "street": "789 Tech Boulevard",
-          "housNamber": "Unit 5",
-          "zipcode": "77001"
+          "houseNumber": "Unit 5",
+          "zipcode": "77001",
+          "lat": "",
+          "lng": ""
         },
         {
           "id": 2,
@@ -384,8 +441,10 @@
           "state": "New York",
           "city": "New York City",
           "street": "456 Art Avenue",
-          "housNamber": "Floor 3",
-          "zipcode": "10001"
+          "houseNumber": "Floor 3",
+          "zipcode": "10001",
+          "lat": "",
+          "lng": ""
         }
       ]
     },
@@ -408,8 +467,10 @@
           "state": "Scotland",
           "city": "Edinburgh",
           "street": "789 Literary Lane",
-          "housNamber": "Floor 1",
-          "zipcode": "EH1 1DH"
+          "houseNumber": "Floor 1",
+          "zipcode": "EH1 1DH",
+          "lat": "",
+          "lng": ""
         }
       ]
     },
@@ -432,8 +493,10 @@
           "state": "Scotland",
           "city": "Edinburgh",
           "street": "789 Literary Lane",
-          "housNamber": "Floor 1",
-          "zipcode": "EH1 1DH"
+          "houseNumber": "Floor 1",
+          "zipcode": "EH1 1DH",
+          "lat": "",
+          "lng": ""
         }
       ]
     }

@@ -1,7 +1,7 @@
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup"
-import { successMsg } from "../services/feedbacksService";
+import { errorMsg, successMsg } from "../services/feedbacksService";
 import Card from "../interfaces/Card";
 import { getCardById, updateCard } from "../services/cardService";
 import { SiteTheme } from "../App";
@@ -39,16 +39,28 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
     },
     validationSchema: yup.object({
       title: yup.string().required().min(2), subtitle: yup.string().required().min(2), description: yup.string().required().min(20),
-      phone: yup.string().required().min(2), email: yup.string().required().email(), webSite: yup.string().min(10), businessImgURL: yup.string().min(2), businessImgAlt: yup.string().min(2), country: yup.string().required().min(2), state: yup.string().min(2), city: yup.string().required().min(2), street: yup.string().required().min(2), houseNumber: yup.string().required().min(2), zipcode: yup.string().min(2),
+      phone: yup.string().required().min(2), email: yup.string().required().email(), webSite: yup.string().min(10), businessImgURL: yup.string().min(2), businessImgAlt: yup.string().min(2), country: yup.string().required().min(2), state: yup.string().min(2), city: yup.string().required().min(2), street: yup.string().required().min(2), houseNumber: yup.string().required().min(1), zipcode: yup.string().min(2),
     }),
     enableReinitialize: true,
     onSubmit(values: Card) {
-      updateCard(values, cardId)
-        .then((res) => {
-          render();
-          onHide();
-          successMsg(`${cardTitle} Business card was updated successfully`);
-        }).catch((err) => console.log(err));
+      const place = `${values.country} ${values.city} ${values.street} ${values.houseNumber}`;
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: place }, (results, status) => {
+        if (status === "OK" && results![0]) {
+          const location = results![0].geometry.location;
+          const lat = (location.lat());
+          const lng = (location.lng());
+          updateCard({ ...values, lat: lat, lng: lng }, cardId)
+            .then((res) => {
+              render();
+              onHide();
+              successMsg(`${cardTitle} Business card was updated successfully`);
+            }).catch((err) =>
+              console.log(err));
+        } else {
+          console.error("Geocode was not successful for the following reason: " + status);
+        }
+      });
     },
   });
   useEffect(() => {
@@ -212,14 +224,15 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
         </div>
       </div>
       <button className="btn btn-secondary w-100 mt-3" type="submit">Update Card</button>
-      <div className="row">
-        <div className="col-6">
-          <button className="btn btn-danger mt-3" onClick={() => onHide()}>Close Without Saving</button>
-        </div>
-        {/* <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => onHide()}>Cancel</button></div> */}
-        {/* <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => formik.resetForm()}>Clear Form</button></div> */}
-      </div>
+
     </form>
+    <div className="row">
+      <div className="col-6">
+        <button className="btn btn-danger mt-3" onClick={() => onHide()}>Close Without Saving</button>
+      </div>
+      {/* <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => onHide()}>Cancel</button></div> */}
+      {/* <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => formik.resetForm()}>Clear Form</button></div> */}
+    </div>
   </div>);
 }
 

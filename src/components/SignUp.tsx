@@ -28,7 +28,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
     },
     validationSchema: yup.object({
       firstName: yup.string().required().min(2), middleName: yup.string().min(2), lastName: yup.string().required().min(2),
-      phone: yup.string().required().min(2), email: yup.string().required().email(), password: yup.string().required().min(8).matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%#^*?&]{8,}$/, "Password must contain at least 1 uppercase letter, lowercase letter, digit and special character (@$!%*?&#^)"), gender: yup.string().required(), userImgURL: yup.string().min(2), country: yup.string().required().min(2), state: yup.string().min(2), city: yup.string().required().min(2), street: yup.string().required().min(2), houseNumber: yup.string().required().min(2), zipcode: yup.string().min(2), role: yup.string().min(2),
+      phone: yup.string().required().min(2), email: yup.string().required().email(), password: yup.string().required().min(8).matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%#^*?&]{8,}$/, "Password must contain at least 1 uppercase letter, lowercase letter, digit and special character (@$!%*?&#^)"), gender: yup.string().required(), userImgURL: yup.string().min(2), country: yup.string().required().min(2), state: yup.string().min(2), city: yup.string().required().min(2), street: yup.string().required().min(2), houseNumber: yup.string().required().min(1), zipcode: yup.string().min(2), role: yup.string().min(2),
     }),
     onSubmit: async (values: User) => {
 

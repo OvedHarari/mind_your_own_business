@@ -64,7 +64,7 @@ function App() {
   return (
     <SiteTheme.Provider value={darkMode ? theme.dark : theme.light}>
       <ToastContainer theme={`${darkMode ? "dark" : "light"}`} />
-      <div className={`App  ${darkMode ? "dark" : "light"}`}>
+      <div className={`App  ${darkMode && "dark"}`}>
         <Router>
           <Navbar
             userInfo={userInfo}
@@ -85,7 +85,7 @@ function App() {
             <Route path="/mycards" element={<MyCards userInfo={userInfo} />} />
             <Route path="/favorites" element={<Favorites setUserInfo={setUserInfo} userInfo={userInfo} />} />
             <Route path="/about" element={<About userInfo={userInfo} />} />
-            <Route path="/map" element={<Map />} />
+            {/* <Route path="/map" element={<Map />} /> */}
             <Route path="/usersmanagement" element={<UsersManagement darkMode={darkMode} render={render} setUserInfo={setUserInfo} userProfile={userProfile} setUserProfile={setUserProfile} passwordShown={passwordShown} togglePassword={togglePassword} userInfo={userInfo} dataUpdated={dataUpdated} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

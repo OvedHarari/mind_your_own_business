@@ -15,5 +15,6 @@ export default interface Card {
   street: string;
   houseNumber: string;
   zipcode: string;
-  // isFavorite: boolean;
+  lat?:number;
+  lng?:number;
 }
