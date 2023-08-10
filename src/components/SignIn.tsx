@@ -31,7 +31,7 @@ const SignIn: FunctionComponent<SignInProps> = ({ setUserInfo, passwordShown, to
               successMsg(`You're signed in as ${values.email}`);
               navigate("/");
             } else {
-              errorMsg("Your User was Deavtivated, please contact System Administrator");
+              errorMsg("Your User was blocked, please contact System Administrator");
             }
           } else {
             errorMsg("Wrong Email or Password");

@@ -7,17 +7,14 @@ interface UserProfileModalProps {
   show: boolean;
   onHide: Function;
   userInfo: any;
-  setUserInfo: Function;
   userProfile: any;
   setUserProfile: Function;
   render: Function;
   passwordShown: boolean;
   togglePassword: Function;
-  // adminSentId:number;
-
 }
 
-const UserProfileModal: FunctionComponent<UserProfileModalProps> = ({ show, onHide, userInfo, setUserInfo, userProfile, setUserProfile, render, passwordShown, togglePassword }) => {
+const UserProfileModal: FunctionComponent<UserProfileModalProps> = ({ show, onHide, userInfo, userProfile, setUserProfile, render, passwordShown, togglePassword }) => {
   let theme = useContext(SiteTheme);
   let [editForm, setEditForm] = useState<boolean>(true)
 
@@ -53,7 +50,6 @@ const UserProfileModal: FunctionComponent<UserProfileModalProps> = ({ show, onHi
 
       <Modal.Body>
         <UserProfile onHide={onHide}
-          setUserInfo={setUserInfo}
           userInfo={userInfo}
           userProfile={userProfile}
           setUserProfile={setUserProfile}

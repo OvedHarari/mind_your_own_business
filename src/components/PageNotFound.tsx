@@ -7,9 +7,9 @@ const PageNotFound: FunctionComponent<PageNotFoundProps> = () => {
   let navigate = useNavigate();
   return (
     <div className="container mt-5">
-      <h1 className="display-3 my-5">404 - Page Not Found !</h1>
+      <h1 className="display-3 my-5">Oooops! <br /> Something whent wrong!! <br /> <small className="fs-4">Please contact website administrator</small> </h1>
       <button className="btn btn-secondary" onClick={() => navigate(-1)}>
-        Back
+        Go Back
       </button>
     </div>
   );

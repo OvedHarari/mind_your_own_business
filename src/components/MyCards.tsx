@@ -60,8 +60,8 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo }) => {
         <img
           src="/mindYourOwnBusiness_LOGO.png"
           alt="Mind Your Own Business logo"
-          width="55"
-          height="49"
+          width="70"
+          height="64"
         ></img>
         Mind Your Own Business Cards
       </h1>
@@ -170,15 +170,13 @@ const MyCards: FunctionComponent<MyCardsProps> = ({ userInfo }) => {
         onHide={() => setOpenUpdateCardModal(false)}
         render={render}
         cardId={cardId}
-        cardTitle={cardTitle}
-        userInfo={userInfo} />
+        cardTitle={cardTitle} />
       <BusinessDetailsModal
         show={openBusinessDetailsModal}
         onHide={() => setOpenBusinessDetailsModal(false)}
-        render={render}
         cardId={cardId}
         cardTitle={cardTitle}
-        userInfo={userInfo} />
+      />
     </div>
   );
 };

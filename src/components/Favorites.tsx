@@ -11,10 +11,9 @@ import { getCards } from "../services/cardService";
 import BusinessDetailsModal from "./BusinessDetailsModal";
 
 interface FavoritesProps {
-  setUserInfo: Function;
   userInfo: any;
 }
-const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo }) => {
+const Favorites: FunctionComponent<FavoritesProps> = ({ userInfo }) => {
   let theme = useContext(SiteTheme);
   let [cards, setCards] = useState<Card[]>([]);
   let [openNewCardModal, setOpenNewCardModal] = useState<boolean>(false);
@@ -64,8 +63,8 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
         <img
           src="/mindYourOwnBusiness_LOGO.png"
           alt="Mind Your Own Business logo"
-          width="55"
-          height="49"
+          width="70"
+          height="64"
         ></img>
         Mind Your Favorite Businesses
       </h1>
@@ -177,15 +176,12 @@ const Favorites: FunctionComponent<FavoritesProps> = ({ setUserInfo, userInfo })
         render={render}
         cardId={cardId}
         cardTitle={cardTitle}
-        userInfo={userInfo}
       />
       <BusinessDetailsModal
         show={openBusinessDetailsModal}
         onHide={() => setOpenBusinessDetailsModal(false)}
-        render={render}
         cardId={cardId}
         cardTitle={cardTitle}
-        userInfo={userInfo}
       />
     </div>
   );

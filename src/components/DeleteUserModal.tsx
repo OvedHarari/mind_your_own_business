@@ -3,24 +3,19 @@ import { Button, Modal } from "react-bootstrap";
 import { successMsg } from "../services/feedbacksService";
 import { SiteTheme } from "../App";
 import { deleteUserById } from "../services/usersService";
-import { deleteFavoritsById } from "../services/favoritesService";
 
 interface DeleteUserModalProps {
   show: boolean;
   onHide: Function;
   render: Function;
-  userId: number;
-  userFirstName: number;
-  userLastName: number;
+  userProfile: any;
 }
 
 const DeleteUserModal: FunctionComponent<DeleteUserModalProps> = ({
   show,
   onHide,
   render,
-  userId,
-  userFirstName,
-  userLastName,
+  userProfile
 }) => {
   let theme = useContext(SiteTheme);
   return (
@@ -38,17 +33,17 @@ const DeleteUserModal: FunctionComponent<DeleteUserModalProps> = ({
         </Modal.Header>
         <Modal.Body>
           Are you sure you want to delete
-          <span className="fw-bold"> "{userFirstName} {userLastName}"</span> ?
+          <span className="fw-bold"> "{userProfile.firstName} {userProfile.lastName}"</span> ?
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="danger"
             onClick={() =>
-              deleteUserById(userId)
+              deleteUserById(userProfile.id)
                 .then((res) => {
                   render();
                   onHide();
-                  successMsg(`The User of ${userFirstName} ${userLastName} was deleted successfully!`);
+                  successMsg(`The User of ${userProfile.firstName} ${userProfile.lastName} was deleted successfully!`);
                 })
                 .catch((err) => console.log(err))}>Yes</Button>
           <Button variant="secondary" onClick={() => onHide()}>

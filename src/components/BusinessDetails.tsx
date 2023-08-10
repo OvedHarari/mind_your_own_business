@@ -3,21 +3,13 @@ import { getCardById } from "../services/cardService";
 import Card from "../interfaces/Card";
 import { Link } from "react-router-dom";
 import BusinessMap from "./BusinessMap";
-// import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 
 interface BusinessDetailsProps {
-    onHide: Function;
-    render: Function;
-    userInfo: any;
+    onHide: Function
     cardId: number;
 }
 
-// google API key
-// AIzaSyAiv - KjHLXG1I7W0 - hGFUJNaWjjOmCfaRc
-
-const BusinessDetails: FunctionComponent<BusinessDetailsProps> = ({ onHide, render, userInfo,
-    cardId
-}) => {
+const BusinessDetails: FunctionComponent<BusinessDetailsProps> = ({ onHide, cardId }) => {
 
     let [card, setCard] = useState<Card>()
     useEffect(() => {
@@ -50,6 +42,7 @@ const BusinessDetails: FunctionComponent<BusinessDetailsProps> = ({ onHide, rend
                     <BusinessMap lat={card.lat as number} lng={card.lng as number} />
                 </div>
             </div>
+            <button className="btn btn-secondary mt-2" onClick={() => onHide()}>Close</button>
         </div>
         )
         }

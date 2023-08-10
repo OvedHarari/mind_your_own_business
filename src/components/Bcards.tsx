@@ -11,11 +11,10 @@ import { successMsg } from "../services/feedbacksService";
 import BusinessDetailsModal from "./BusinessDetailsModal";
 
 interface BcardsProps {
-  setUserInfo: Function;
   userInfo: any;
 }
 
-const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
+const Bcards: FunctionComponent<BcardsProps> = ({ userInfo }) => {
   let theme = useContext(SiteTheme);
   let [cards, setCards] = useState<Card[]>([]);
   let [openNewCardModal, setOpenNewCardModal] = useState<boolean>(false);
@@ -181,15 +180,12 @@ const Bcards: FunctionComponent<BcardsProps> = ({ setUserInfo, userInfo }) => {
         render={render}
         cardId={cardId}
         cardTitle={cardTitle}
-        userInfo={userInfo}
       />
       <BusinessDetailsModal
         show={openBusinessDetailsModal}
         onHide={() => setOpenBusinessDetailsModal(false)}
-        render={render}
         cardId={cardId}
         cardTitle={cardTitle}
-        userInfo={userInfo}
       />
     </div>
   );

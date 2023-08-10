@@ -9,17 +9,16 @@ import LockUserModal from "./LockUserModal";
 import ChangeRoleModal from "./ChangeRoleModal";
 
 interface UsersManagementProps {
-  darkMode: any
-  render: Function
-  setUserInfo: Function;
+  darkMode: any;
+  render: Function;
   userInfo: any;
   userProfile: any;
   setUserProfile: Function;
   passwordShown: boolean;
   togglePassword: Function;
-  dataUpdated: boolean
+  dataUpdated: boolean;
 }
-const UsersManagement: FunctionComponent<UsersManagementProps> = ({ darkMode, render, setUserInfo, userInfo, userProfile, setUserProfile, passwordShown, togglePassword, dataUpdated }) => {
+const UsersManagement: FunctionComponent<UsersManagementProps> = ({ darkMode, render, userInfo, userProfile, setUserProfile, passwordShown, togglePassword, dataUpdated }) => {
   let theme = useContext(SiteTheme)
   let [users, setUsers] = useState<User[]>([])
   let [userProfileModal, setOpenUserProfileModal] = useState<boolean>(false);
@@ -27,7 +26,7 @@ const UsersManagement: FunctionComponent<UsersManagementProps> = ({ darkMode, re
   let [openLockUserModal, setOpenLockUserModal] = useState<boolean>(false);
   let [openChangeRoleModal, setOpenChangeRoleModal] = useState<boolean>(false);
   let updateUserProfile = (userEmail: string) => getUserByEmail(userEmail).then((res) => { setUserProfile(res.data[0]); }).catch((err) => console.log(err))
-  // let [isActive, setIsActive] = useState<boolean>(userProfile.isActive)
+
   useEffect(() => {
     getAllUsers().then((res) => setUsers(res.data)).catch((err) => console.log((err)))
   }, [dataUpdated]);
@@ -115,7 +114,6 @@ const UsersManagement: FunctionComponent<UsersManagementProps> = ({ darkMode, re
       onHide={() => setOpenUserProfileModal(false)}
       render={render}
       userInfo={userInfo}
-      setUserInfo={setUserInfo}
       userProfile={userProfile}
       setUserProfile={setUserProfile}
       togglePassword={togglePassword}
@@ -125,18 +123,13 @@ const UsersManagement: FunctionComponent<UsersManagementProps> = ({ darkMode, re
       show={openDeleteUserModal}
       onHide={() => setOpenDeleteUserModal(false)}
       render={render}
-      userId={userProfile.id}
-      userFirstName={userProfile.firstName}
-      userLastName={userProfile.lastName}
+      userProfile={userProfile}
     />
     <LockUserModal
       show={openLockUserModal}
       onHide={() => setOpenLockUserModal(false)}
       render={render}
       userProfile={userProfile}
-      userId={userProfile.id}
-      userFirstName={userProfile.firstName}
-      userLastName={userProfile.lastName}
       isActive={userProfile.isActive}
     />
     <ChangeRoleModal

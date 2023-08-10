@@ -7,13 +7,11 @@ interface UpdateCardModalProps {
   show: boolean;
   onHide: Function;
   render: Function;
-  userInfo: any;
   cardId: number;
   cardTitle: string;
-
 }
 
-const UpdateCardModal: FunctionComponent<UpdateCardModalProps> = ({ show, onHide, render, userInfo, cardId, cardTitle }) => {
+const UpdateCardModal: FunctionComponent<UpdateCardModalProps> = ({ show, onHide, render, cardId, cardTitle }) => {
   let theme = useContext(SiteTheme);
   return (<div
     className="modal show"
@@ -33,7 +31,7 @@ const UpdateCardModal: FunctionComponent<UpdateCardModalProps> = ({ show, onHide
       </Modal.Header>
 
       <Modal.Body>
-        <UpdateCard onHide={onHide} render={render} userInfo={userInfo} cardId={cardId} cardTitle={cardTitle} />
+        <UpdateCard onHide={onHide} render={render} cardId={cardId} cardTitle={cardTitle} />
       </Modal.Body>
     </Modal>
   </div>);

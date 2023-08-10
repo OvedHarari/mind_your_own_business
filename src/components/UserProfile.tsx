@@ -7,7 +7,6 @@ import { successMsg } from "../services/feedbacksService";
 
 interface UserProfileProps {
   userInfo: any;
-  setUserInfo: Function;
   onHide: Function;
   setUserProfile: Function;
   userProfile: any;
@@ -17,7 +16,7 @@ interface UserProfileProps {
   togglePassword: Function;
   passwordShown: boolean;
 }
-const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide, userProfile, editForm, setEditForm, render, togglePassword, passwordShown }) => {
+const UserProfile: FunctionComponent<UserProfileProps> = ({ onHide, userProfile, editForm, setEditForm, render, togglePassword, passwordShown }) => {
   let formik = useFormik({
     initialValues: {
       firstName: userProfile.firstName, middleName: userProfile.middleName, lastName: userProfile.lastName, phone: userProfile.phone, email: userProfile.email, password: userProfile.password, gender: userProfile.gender, userImgURL: userProfile.userImgURL, country: userProfile.country, state: userProfile.state, city: userProfile.city, street: userProfile.street, houseNumber: userProfile.houseNumber, zipcode: userProfile.zipcode, role: userProfile.role, isActive: userProfile.isActive
@@ -47,7 +46,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
           <h6 className=" mt-4 text-start">General</h6>
           <div className="row g-2 border rounded-4 border-secondary mt-1">
             <div className="form-floating col-6 mb-3 mt-3">
-              <input type="text" className="form-control border-secondary " id="floatingFirstName" placeholder="John Doe"
+              <input type="text" className="form-control border-secondary " id="floatingFirstName" placeholder="First Nane"
                 name="firstName"
                 onChange={formik.handleChange}
                 value={formik.values.firstName}
@@ -57,7 +56,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
               {formik.touched.firstName && formik.errors.firstName && (<p className="text-danger">{formik.errors.firstName}</p>)}
             </div>
             <div className="form-floating col-6 mb-3 mt-3">
-              <input type="text" className="form-control border-secondary" id="floatingMiddleName" placeholder="John Doe"
+              <input type="text" className="form-control border-secondary" id="floatingMiddleName" placeholder="Middle Name"
                 name="middleName"
                 onChange={formik.handleChange}
                 value={formik.values.middleName}
@@ -66,9 +65,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
               {formik.touched.middleName && formik.errors.middleName && (<p className="text-danger">{formik.errors.middleName}</p>)}
             </div>
             <div className="form-floating col-6 mb-3">
-              <input type="text" className="form-control border-secondary"
-                id="floatingLastName"
-                placeholder="John Doe"
+              <input type="text" className="form-control border-secondary" id="floatingLastName" placeholder="Last Name"
                 name="lastName"
                 onChange={formik.handleChange}
                 value={formik.values.lastName}
@@ -77,7 +74,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
               {formik.touched.lastName && formik.errors.lastName && (<p className="text-danger">{formik.errors.lastName}</p>)}
             </div>
             <div className="form-floating col-6 mb-3">
-              <input type="text" className="form-control border-secondary" id="floatingPhone" placeholder="John Doe"
+              <input type="text" className="form-control border-secondary" id="floatingPhone" placeholder="Phone Number"
                 name="phone"
                 onChange={formik.handleChange}
                 value={formik.values.phone}
@@ -110,7 +107,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
           <h6 className="mt-4 text-start">Gander / Image</h6>
           <div className="row g-2 border rounded-4 border-secondary mt-1">
             <div className="form-floating col-6 mb-3 mt-3 ">
-              <select className="form-select border-secondary" aria-label="Grnder" id="floatingGender" placeholder="John Doe"
+              <select className="form-select border-secondary" aria-label="Grnder" id="floatingGender" placeholder="Gender"
                 name="gender"
                 onChange={formik.handleChange}
                 value={formik.values.gender}
@@ -126,7 +123,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
             </div>
             <div className="form-floating col-6 mb-3 mt-3">
               <input
-                type="text" className="form-control border-secondary" id="floatingUserImgURL" placeholder="John Doe"
+                type="text" className="form-control border-secondary" id="floatingUserImgURL" placeholder="User Image URL"
                 name="userImgURL"
                 onChange={formik.handleChange}
                 value={formik.values.userImgURL}
@@ -138,7 +135,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
           <h6 className="mt-4 text-start">Address</h6>
           <div className="row g-2 border rounded-4 border-secondary mt-1">
             <div className="form-floating col-6 mb-3 mt-3">
-              <input type="text" className="form-control border-secondary" id="floatingState" placeholder="John Doe"
+              <input type="text" className="form-control border-secondary" id="floatingState" placeholder="State"
                 name="state"
                 onChange={formik.handleChange}
                 value={formik.values.state}
@@ -147,7 +144,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
               {formik.touched.state && formik.errors.state && (<p className="text-danger">{formik.errors.state}</p>)}
             </div>
             <div className="form-floating col-6 mb-3 mt-3">
-              <input type="text" className="form-control border-secondary" id="floatingCountry" placeholder="John Doe"
+              <input type="text" className="form-control border-secondary" id="floatingCountry" placeholder="Country"
                 name="country"
                 onChange={formik.handleChange}
                 value={formik.values.country}
@@ -156,7 +153,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
               {formik.touched.country && formik.errors.country && (<p className="text-danger">{formik.errors.country}</p>)}
             </div>
             <div className="form-floating col-6 mb-3">
-              <input type="text" className="form-control border-secondary" id="floatingCity" placeholder="John Doe"
+              <input type="text" className="form-control border-secondary" id="floatingCity" placeholder="City"
                 name="city"
                 onChange={formik.handleChange}
                 value={formik.values.city}
@@ -165,7 +162,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
               {formik.touched.city && formik.errors.city && (<p className="text-danger">{formik.errors.city}</p>)}
             </div>
             <div className="form-floating col-6 mb-3">
-              <input type="text" className="form-control border-secondary" id="floatingStreet" placeholder="John Doe"
+              <input type="text" className="form-control border-secondary" id="floatingStreet" placeholder="Street"
                 name="street"
                 onChange={formik.handleChange}
                 value={formik.values.street}
@@ -175,7 +172,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
             </div>
             <div className="form-floating col-6 mb-3">
               <input
-                type="text" className="form-control border-secondary" id="floatingHouseNumber" placeholder="John Doe"
+                type="text" className="form-control border-secondary" id="floatingHouseNumber" placeholder="House Number"
                 name="houseNumber"
                 onChange={formik.handleChange}
                 value={formik.values.houseNumber}
@@ -186,9 +183,7 @@ const UserProfile: FunctionComponent<UserProfileProps> = ({ setUserInfo, onHide,
             <div className="form-floating col-6 mb-3">
               <input
                 type="text"
-                className="form-control border-secondary"
-                id="floatingZipCode"
-                placeholder="John Doe"
+                className="form-control border-secondary" id="floatingZipCode" placeholder="Zip Code"
                 name="zipcode"
                 onChange={formik.handleChange}
                 value={formik.values.zipcode}

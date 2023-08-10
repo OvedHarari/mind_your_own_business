@@ -7,12 +7,10 @@ import BusinessDetails from "./BusinessDetails";
 interface BusinessDetailsModalProps {
   show: boolean;
   onHide: Function;
-  render: Function;
-  userInfo: any;
   cardId: number;
   cardTitle: string;
 }
-const BusinessDetailsModal: FunctionComponent<BusinessDetailsModalProps> = ({ show, onHide, render, userInfo, cardId, cardTitle }) => {
+const BusinessDetailsModal: FunctionComponent<BusinessDetailsModalProps> = ({ show, onHide, cardId, cardTitle }) => {
   let theme = useContext(SiteTheme);
 
   return (<div
@@ -22,7 +20,6 @@ const BusinessDetailsModal: FunctionComponent<BusinessDetailsModalProps> = ({ sh
       className={`${theme} set-modal`}
       show={show}
       onHide={() => onHide()}
-      // backdrop="static"
       keyboard={false}
       size="xl"
       aria-labelledby="contained-modal-title-vcenter"
@@ -32,9 +29,7 @@ const BusinessDetailsModal: FunctionComponent<BusinessDetailsModalProps> = ({ sh
       </Modal.Header>
 
       <Modal.Body>
-        <BusinessDetails onHide={onHide} render={render} userInfo={userInfo}
-          cardId={cardId}
-        />
+        <BusinessDetails onHide={onHide} cardId={cardId} />
       </Modal.Body>
     </Modal>
   </div>);

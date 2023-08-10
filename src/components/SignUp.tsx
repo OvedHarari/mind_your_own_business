@@ -19,7 +19,6 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
     if (user) return user;
   };
 
-
   let formik = useFormik({
     initialValues: {
       firstName: "", middleName: "", lastName: "", phone: "", email: "", password: "", gender: "", userImgURL: "",
@@ -48,18 +47,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
       }
     },
   });
-  //   onSubmit(values: User) {
-  //     addUser(values)
-  //       .then((res) => {
-  //         navigate("/");
-  //         sessionStorage.setItem("userInfo", JSON.stringify({ email: res.data.email, userId: res.data.id, role: res.data.role, gender: res.data.gender }));
-  //         setUserInfo(JSON.parse(sessionStorage.getItem("userInfo") as string));
-  //         createFavoritsById(res.data.id)
-  //         successMsg(`${values.email} was registered and logged in`);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   },
-  // });
+
   return (
     <div className="container mt-5">
       <form className="form-floating signup mb-3 mt-3" onSubmit={formik.handleSubmit}>
@@ -67,7 +55,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
         <h6 className=" mt-4 text-start">General</h6>
         <div className="row g-2 border rounded-4 border-secondary mt-1">
           <div className="form-floating col-6 mb-3 mt-3">
-            <input type="text" className="form-control border-secondary " id="floatingFirstName" placeholder="John Doe"
+            <input type="text" className="form-control border-secondary " id="floatingFirstName" placeholder="First Name"
               name="firstName"
               onChange={formik.handleChange}
               value={formik.values.firstName}
@@ -77,7 +65,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
               <p className="text-danger">{formik.errors.firstName}</p>)}
           </div>
           <div className="form-floating col-6 mb-3 mt-3">
-            <input type="text" className="form-control border-secondary" id="floatingMiddleName" placeholder="John Doe"
+            <input type="text" className="form-control border-secondary" id="floatingMiddleName" placeholder="Middle Name"
               name="middleName"
               onChange={formik.handleChange}
               value={formik.values.middleName}
@@ -87,9 +75,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
               <p className="text-danger">{formik.errors.middleName}</p>)}
           </div>
           <div className="form-floating col-6 mb-3">
-            <input type="text" className="form-control border-secondary"
-              id="floatingLastName"
-              placeholder="John Doe"
+            <input type="text" className="form-control border-secondary" id="floatingLastName" placeholder="Last Name"
               name="lastName"
               onChange={formik.handleChange}
               value={formik.values.lastName}
@@ -99,7 +85,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
               <p className="text-danger">{formik.errors.lastName}</p>)}
           </div>
           <div className="form-floating col-6 mb-3">
-            <input type="text" className="form-control border-secondary" id="floatingPhone" placeholder="John Doe"
+            <input type="text" className="form-control border-secondary" id="floatingPhone" placeholder="Phone Number"
               name="phone"
               onChange={formik.handleChange}
               value={formik.values.phone}
@@ -135,7 +121,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
         <h6 className="mt-4 text-start">Gander / Image</h6>
         <div className="row g-2 border rounded-4 border-secondary mt-1">
           <div className="form-floating col-6 mb-3 mt-3 ">
-            <select className="form-select border-secondary" aria-label="Grnder" id="floatingGender" placeholder="John Doe"
+            <select className="form-select border-secondary" aria-label="Grnder" id="floatingGender" placeholder="Gender"
               name="gender"
               onChange={formik.handleChange}
               value={formik.values.gender}
@@ -151,7 +137,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
           </div>
           <div className="form-floating col-6 mb-3 mt-3">
             <input
-              type="text" className="form-control border-secondary" id="floatingUserImgURL" placeholder="John Doe"
+              type="text" className="form-control border-secondary" id="floatingUserImgURL" placeholder="User Image URL"
               name="userImgURL"
               onChange={formik.handleChange}
               value={formik.values.userImgURL}
@@ -163,7 +149,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
         <h6 className="mt-4 text-start">Address</h6>
         <div className="row g-2 border rounded-4 border-secondary mt-1">
           <div className="form-floating col-6 mb-3 mt-3">
-            <input type="text" className="form-control border-secondary" id="floatingState" placeholder="John Doe"
+            <input type="text" className="form-control border-secondary" id="floatingState" placeholder="State"
               name="state"
               onChange={formik.handleChange}
               value={formik.values.state}
@@ -172,7 +158,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
             {formik.touched.state && formik.errors.state && (<p className="text-danger">{formik.errors.state}</p>)}
           </div>
           <div className="form-floating col-6 mb-3 mt-3">
-            <input type="text" className="form-control border-secondary" id="floatingCountry" placeholder="John Doe"
+            <input type="text" className="form-control border-secondary" id="floatingCountry" placeholder="Country"
               name="country"
               onChange={formik.handleChange}
               value={formik.values.country}
@@ -181,7 +167,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
             {formik.touched.country && formik.errors.country && (<p className="text-danger">{formik.errors.country}</p>)}
           </div>
           <div className="form-floating col-6 mb-3">
-            <input type="text" className="form-control border-secondary" id="floatingCity" placeholder="John Doe"
+            <input type="text" className="form-control border-secondary" id="floatingCity" placeholder="City"
               name="city"
               onChange={formik.handleChange}
               value={formik.values.city}
@@ -190,7 +176,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
             {formik.touched.city && formik.errors.city && (<p className="text-danger">{formik.errors.city}</p>)}
           </div>
           <div className="form-floating col-6 mb-3">
-            <input type="text" className="form-control border-secondary" id="floatingStreet" placeholder="John Doe"
+            <input type="text" className="form-control border-secondary" id="floatingStreet" placeholder="Street"
               name="street"
               onChange={formik.handleChange}
               value={formik.values.street}
@@ -200,7 +186,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
           </div>
           <div className="form-floating col-6 mb-3">
             <input
-              type="text" className="form-control border-secondary" id="floatingHouseNumber" placeholder="John Doe"
+              type="text" className="form-control border-secondary" id="floatingHouseNumber" placeholder="House Number"
               name="houseNumber"
               onChange={formik.handleChange}
               value={formik.values.houseNumber}
@@ -211,9 +197,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
           <div className="form-floating col-6 mb-3">
             <input
               type="text"
-              className="form-control border-secondary"
-              id="floatingZipCode"
-              placeholder="John Doe"
+              className="form-control border-secondary" id="floatingZipCode" placeholder="Zip code"
               name="zipcode"
               onChange={formik.handleChange}
               value={formik.values.zipcode}
@@ -222,8 +206,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
             {formik.touched.zipcode && formik.errors.zipcode && (<p className="text-danger">{formik.errors.zipcode}</p>)}
           </div>
           <div className="form-check ms-3 text-start fw-bold">
-            <input className="form-check-input" type="checkbox" id="roleCheckbox"
-              name="role"
+            <input className="form-check-input" type="checkbox" id="roleCheckbox" name="role"
               checked={formik.values.role === "business"}
               onChange={(e) => { formik.setFieldValue("role", e.target.checked ? "business" : "user"); }}
               onBlur={formik.handleBlur} />
@@ -231,8 +214,6 @@ const SignUp: FunctionComponent<SignUpProps> = ({ setUserInfo, passwordShown, to
               SignUp as Business !!!
             </label>
             {formik.touched.role && formik.errors.role && (<p className="text-danger">{formik.errors.role}</p>)}
-
-            {/* <input type="file" alt="Submit" /> */}
           </div>
         </div>
         <button className="btn btn-secondary w-100 mt-3" type="submit">SignUp</button>

@@ -9,9 +9,6 @@ interface LockUserModalProps {
   onHide: Function;
   render: Function;
   userProfile: any;
-  userId: number;
-  userFirstName: number;
-  userLastName: number;
   isActive: boolean
 }
 
@@ -20,9 +17,6 @@ const LockUserModal: FunctionComponent<LockUserModalProps> = ({
   onHide,
   render,
   userProfile,
-  userId,
-  userFirstName,
-  userLastName,
   isActive
 }) => {
   let theme = useContext(SiteTheme);
@@ -43,18 +37,16 @@ const LockUserModal: FunctionComponent<LockUserModalProps> = ({
           {isActive ? (<p>Are you sure you want to LOCK
             <span className="fw-bold"> "{userProfile.firstName} {userProfile.lastName}"</span> ?</p>) : (<p>Are you sure you want to UNLOCK
               <span className="fw-bold"> "{userProfile.firstName} {userProfile.lastName}"</span> ?</p>)}
-
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="danger"
             onClick={() =>
-              activateUser(userId, !isActive)
+              activateUser(userProfile.id, !isActive)
                 .then((res) => {
                   render();
                   onHide();
                   isActive ? (successMsg(`User ${userProfile.firstName} ${userProfile.lastName} was LOCKED !`)) : (successMsg(`User ${userProfile.firstName} ${userProfile.lastName} is now UNLOCKED!`))
-
                 })
                 .catch((err) => console.log(err))}>Yes</Button>
           <Button variant="secondary" onClick={() => onHide()}>

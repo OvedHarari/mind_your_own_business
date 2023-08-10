@@ -13,17 +13,21 @@ interface NewCardProps {
 }
 const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) => {
   let theme = useContext(SiteTheme);
+
   let formik = useFormik({
     initialValues: {
-      title: "", subtitle: "", description: "", phone: "", email: "", webSite: "", businessImgURL: "", businessImgAlt: "", country: "", state: "", city: "", street: "", houseNumber: "", zipcode: "", owner: `${userInfo.email}`
+      title: "", subtitle: "", description: "", phone: "", email: "", webSite: "", businessImgURL: "", businessImgAlt: "", country: "", state: "", city: "", street: "", houseNumber: "", zipcode: "", owner: `${userInfo.email}`, lat: 0, lng: 0
     },
     validationSchema: yup.object({
       title: yup.string().required().min(2), subtitle: yup.string().required().min(2), description: yup.string().required().min(20),
-      phone: yup.string().required().min(2), email: yup.string().required().email(), webSite: yup.string().min(10), businessImgURL: yup.string().min(2), businessImgAlt: yup.string().min(2), country: yup.string().required().min(2), state: yup.string().min(2), city: yup.string().required().min(2), street: yup.string().required().min(2), houseNumber: yup.string().required().min(2), zipcode: yup.string().min(2)
+      phone: yup.string().required().min(2), email: yup.string().required().email(), webSite: yup.string().min(10), businessImgURL: yup.string().min(2), businessImgAlt: yup.string().min(2), country: yup.string().required().min(2), state: yup.string().min(2), city: yup.string().required().min(2), street: yup.string().required().min(2), houseNumber: yup.string().required().min(1), zipcode: yup.string().min(2)
     }),
     onSubmit(values: Card) {
-      const place = `${values.country} ${values.city} ${values.street} ${values.houseNumber}`;
       const geocoder = new window.google.maps.Geocoder();
+      const place = `${values.country} ${values.city} ${values.street} ${values.houseNumber}`;
+      console.log(place);
+
+      console.log("done");
       geocoder.geocode({ address: place }, (results, status) => {
         if (status === "OK" && results![0]) {
           const location = results![0].geometry.location;
@@ -48,7 +52,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
       <h6 className=" mt-4 ">General</h6>
       <div className="row g-2 border rounded-4 border-secondary mt-1">
         <div className="form-floating col-6 mb-3 mt-3">
-          <input type="text" className="form-control border-secondary" id="floatingTitle" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingTitle" placeholder="Title"
             name="title"
             onChange={formik.handleChange}
             value={formik.values.title}
@@ -58,7 +62,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
             <p className="text-danger">{formik.errors.title}</p>)}
         </div>
         <div className="form-floating col-6 mb-3 mt-3">
-          <input type="text" className="form-control border-secondary" id="floatingSubtitle" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingSubtitle" placeholder="Subtitle"
             name="subtitle"
             onChange={formik.handleChange}
             value={formik.values.subtitle}
@@ -80,7 +84,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
             <p className="text-danger">{formik.errors.description}</p>)}
         </div>
         <div className="form-floating col-6 mb-3">
-          <input type="text" className="form-control border-secondary" id="floatingPhone" placeholder="Phone"
+          <input type="text" className="form-control border-secondary" id="floatingPhone" placeholder="Phone Number"
             name="phone"
             onChange={formik.handleChange}
             value={formik.values.phone}
@@ -138,7 +142,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
       <h6 className="mt-4">Address</h6>
       <div className="row g-2 border rounded-4 border-secondary mt-1">
         <div className="form-floating col-6 mb-3 mt-3">
-          <input type="text" className="form-control border-secondary" id="floatingState" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingState" placeholder="State"
             name="state"
             onChange={formik.handleChange}
             value={formik.values.state}
@@ -148,7 +152,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
             <p className="text-danger">{formik.errors.state}</p>)}
         </div>
         <div className="form-floating col-6 mb-3 mt-3">
-          <input type="text" className="form-control border-secondary" id="floatingCountry" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingCountry" placeholder="Country"
             name="country"
             onChange={formik.handleChange}
             value={formik.values.country}
@@ -158,7 +162,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
             <p className="text-danger">{formik.errors.country}</p>)}
         </div>
         <div className="form-floating col-6 mb-3">
-          <input type="text" className="form-control border-secondary" id="floatingCity" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingCity" placeholder="City"
             name="city"
             onChange={formik.handleChange}
             value={formik.values.city}
@@ -168,7 +172,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
             <p className="text-danger">{formik.errors.city}</p>)}
         </div>
         <div className="form-floating col-6 mb-3">
-          <input type="text" className="form-control border-secondary" id="floatingStreet" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingStreet" placeholder="Street"
             name="street"
             onChange={formik.handleChange}
             value={formik.values.street}
@@ -179,7 +183,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
         </div>
         <div className="form-floating col-6 mb-3">
           <input
-            type="text" className="form-control border-secondary" id="floatingHouseNumber" placeholder="John Doe"
+            type="text" className="form-control border-secondary" id="floatingHouseNumber" placeholder="House Number"
             name="houseNumber"
             onChange={formik.handleChange}
             value={formik.values.houseNumber}
@@ -189,7 +193,7 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
             <p className="text-danger">{formik.errors.houseNumber}</p>)}
         </div>
         <div className="form-floating col-6 mb-3">
-          <input type="text" className="form-control border-secondary" id="floatingZipCode" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingZipCode" placeholder="Zip code"
             name="zipcode"
             onChange={formik.handleChange}
             value={formik.values.zipcode}
@@ -200,12 +204,11 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
         </div>
       </div>
       <button className="btn btn-secondary w-100 mt-3" type="submit">Create Card</button>
-      <div className="row">
-        <div className="col-6"><button className="btn btn-danger w-100 mt-3" onClick={() => onHide()}>Cancel</button></div>
-        <div className="col-6"><button className="btn btn-danger w-100 mt-3" onClick={() => formik.resetForm()}>Clear Form</button></div>
-      </div>
-
     </form>
+    <div className="row">
+      <div className="col-6"><button className="btn btn-danger w-100 mt-3" onClick={() => onHide()}>Cancel</button></div>
+      <div className="col-6"><button className="btn btn-danger w-100 mt-3" onClick={() => formik.resetForm()}>Clear Form</button></div>
+    </div>
   </div>);
 }
 

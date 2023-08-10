@@ -36,12 +36,6 @@ export async function activateUser(userId:number, isActive:boolean){
 try {
     const response = await getUserById(userId);
     const userToUpdate = response.data; 
-
-    // if (!userToUpdate) {
-    //   console.error('User not found');
-    //   return null;
-    // }
-
     const updatedUser = { ...userToUpdate, isActive };
     await updateUser(updatedUser, userId);
     return updatedUser;
@@ -55,12 +49,6 @@ export async function changeUserRole(userId:number, role:string){
 try {
     const response = await getUserById(userId);
     const userToUpdate = response.data; 
-
-    // if (!userToUpdate) {
-    //   console.error('User not found');
-    //   return null;
-    // }
-
     const updatedUser = { ...userToUpdate, role };
     await updateUser(updatedUser, userId);
     return updatedUser;

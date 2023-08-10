@@ -1,7 +1,7 @@
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup"
-import { errorMsg, successMsg } from "../services/feedbacksService";
+import { successMsg } from "../services/feedbacksService";
 import Card from "../interfaces/Card";
 import { getCardById, updateCard } from "../services/cardService";
 import { SiteTheme } from "../App";
@@ -9,11 +9,10 @@ import { SiteTheme } from "../App";
 interface UpdateCardProps {
   onHide: Function;
   render: Function;
-  userInfo: any;
   cardId: number;
   cardTitle: string;
 }
-const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userInfo, cardId, cardTitle }) => {
+const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, cardId, cardTitle }) => {
   let theme = useContext(SiteTheme);
   let [card, setCard] = useState<Card>(
     {
@@ -72,7 +71,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
       <h6 className=" mt-4 ">General</h6>
       <div className="row g-2 border rounded-4 border-secondary mt-1">
         <div className="form-floating col-6 mb-3 mt-3">
-          <input type="text" className="form-control border-secondary" id="floatingTitle" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingTitle" placeholder="Business title"
             name="title"
             onChange={formik.handleChange}
             value={formik.values.title}
@@ -82,7 +81,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
             <p className="text-danger">{formik.errors.title}</p>)}
         </div>
         <div className="form-floating col-6 mb-3 mt-3">
-          <input type="text" className="form-control border-secondary" id="floatingSubtitle" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingSubtitle" placeholder="Busines subtitle"
             name="subtitle"
             onChange={formik.handleChange}
             value={formik.values.subtitle}
@@ -92,9 +91,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
             <p className="text-danger">{formik.errors.subtitle}</p>)}
         </div>
         <div className="form-floating col-6 mb-3">
-          <input type="text" className="form-control border-secondary"
-            id="floatingDescription"
-            placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingDescription" placeholder="Business description"
             name="description"
             onChange={formik.handleChange}
             value={formik.values.description}
@@ -104,7 +101,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
             <p className="text-danger">{formik.errors.description}</p>)}
         </div>
         <div className="form-floating col-6 mb-3">
-          <input type="text" className="form-control border-secondary" id="floatingPhone" placeholder="Phone"
+          <input type="text" className="form-control border-secondary" id="floatingPhone" placeholder="Phone Number"
             name="phone"
             onChange={formik.handleChange}
             value={formik.values.phone}
@@ -162,7 +159,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
       <h6 className="mt-4">Address</h6>
       <div className="row g-2 border rounded-4 border-secondary mt-1">
         <div className="form-floating col-6 mb-3 mt-3">
-          <input type="text" className="form-control border-secondary" id="floatingState" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingState" placeholder="State"
             name="state"
             onChange={formik.handleChange}
             value={formik.values.state}
@@ -172,7 +169,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
             <p className="text-danger">{formik.errors.state}</p>)}
         </div>
         <div className="form-floating col-6 mb-3 mt-3">
-          <input type="text" className="form-control border-secondary" id="floatingCountry" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingCountry" placeholder="Country"
             name="country"
             onChange={formik.handleChange}
             value={formik.values.country}
@@ -182,7 +179,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
             <p className="text-danger">{formik.errors.country}</p>)}
         </div>
         <div className="form-floating col-6 mb-3">
-          <input type="text" className="form-control border-secondary" id="floatingCity" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingCity" placeholder="City"
             name="city"
             onChange={formik.handleChange}
             value={formik.values.city}
@@ -192,7 +189,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
             <p className="text-danger">{formik.errors.city}</p>)}
         </div>
         <div className="form-floating col-6 mb-3">
-          <input type="text" className="form-control border-secondary" id="floatingStreet" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingStreet" placeholder="Street"
             name="street"
             onChange={formik.handleChange}
             value={formik.values.street}
@@ -203,7 +200,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
         </div>
         <div className="form-floating col-6 mb-3">
           <input
-            type="text" className="form-control border-secondary" id="floatingHouseNumber" placeholder="John Doe"
+            type="text" className="form-control border-secondary" id="floatingHouseNumber" placeholder="House Number"
             name="houseNumber"
             onChange={formik.handleChange}
             value={formik.values.houseNumber}
@@ -213,7 +210,7 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
             <p className="text-danger">{formik.errors.houseNumber}</p>)}
         </div>
         <div className="form-floating col-6 mb-3">
-          <input type="text" className="form-control border-secondary" id="floatingZipCode" placeholder="John Doe"
+          <input type="text" className="form-control border-secondary" id="floatingZipCode" placeholder="Zip Code"
             name="zipcode"
             onChange={formik.handleChange}
             value={formik.values.zipcode}
@@ -224,14 +221,11 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, userIn
         </div>
       </div>
       <button className="btn btn-secondary w-100 mt-3" type="submit">Update Card</button>
-
     </form>
     <div className="row">
       <div className="col-6">
         <button className="btn btn-danger mt-3" onClick={() => onHide()}>Close Without Saving</button>
       </div>
-      {/* <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => onHide()}>Cancel</button></div> */}
-      {/* <div className="col-6"><button className="btn btn-secondary w-100" onClick={() => formik.resetForm()}>Clear Form</button></div> */}
     </div>
   </div>);
 }

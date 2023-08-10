@@ -54,8 +54,6 @@ const Navbar: FunctionComponent<NavbarProps> = ({
     return "images/users_img/user_male.webp";
   };
 
-
-
   return (
     <>
       <div>
@@ -111,21 +109,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
                 )}
               </ul>
               <form className="d-flex">
-                <div className="container">
-                  <div className="row justify-content-center mt-1">
-                    <div className="col-md-12">
-                      {/* <div className="search-bar">
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Search..."
-                        />
-                        <i className="search-icon fa-solid fa-magnifying-glass"></i>
-                      </div> */}
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-2 me-3 fs-4" onClick={() => {
+                <div className="mt-2 me-3 ms-3 fs-4" onClick={() => {
                   setDarkMode(!darkMode);
                   localStorage.setItem("darkMode", JSON.stringify(!darkMode));
                 }}>
@@ -165,13 +149,11 @@ const Navbar: FunctionComponent<NavbarProps> = ({
         onHide={() => setOpenUserProfileModal(false)}
         render={render}
         userInfo={userInfo}
-        setUserInfo={setUserInfo}
         userProfile={userProfile}
         setUserProfile={setUserProfile}
         togglePassword={togglePassword}
         passwordShown={passwordShown} />
     </>
-
   );
 };
 
