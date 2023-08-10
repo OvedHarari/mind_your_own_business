@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# Mind Your Own Business
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was writen on React with bootstrapped.
 
-## Available Scripts
+## Project Description
 
-In the project directory, you can run:
+The project is a platform that connects businesses with potential customers in a user-friendly way.
+Users can Sign up to platform as casual users or business users and an Admin user can grant Admin permition to other users.
 
-### `npm start`
+### Users for testing:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Casual user - casual1@test.com , password- 12345678
+2. Business user - business1@test.com , password- 12345678
+3. Casual user - admin1@test.com , password- 12345678
+4. Blocked user - blocked1@test.com , password- 12345678
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Basic functionality:
 
-### `npm test`
+1. users can sign up as casual users or business users
+2. password validation regex on signup/login
+3. form validation using formik with yup.
+4. user profile image conditionat renderin acording to gender (in case the user did not add image URL)
+5. Dark\Light mode support and responsive display.
+6. Google Geocoder service upon new business card creation and\or update.
+7. Google Maps service on buliness details card marking business location.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Casual users functionality:
 
-### `npm run build`
+1. View existing business cards and details.
+2. Mark favorite business cards and view them/remuve them on the main/fav tabs.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### business users functionality:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. All Casual users functionality is available.
+2. Ability to add new business cards including all CRAD functionality.
+3. Additional My Cards tab to manage you own cards.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Admin users functionality:
 
-### `npm run eject`
+1. All Business users functionality is available.
+2. Additional Admin tab - to manage all existing users.
+3. Update Users Details
+4. Changing users role (casual/ business/ Admin).
+5. Block user from accessing the platform.
+6. Delete Users.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Getting Started
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Run 'npm install' to get all required modules and installations
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Environment variables
 
-## Learn More
+1. REACT_APP_API="http://localhost:8000"
+2. REACT_APP_GOOGLE_MAPS_API_KEY="ADD_YOUR_GOOGLE_API_KEY" || Contact Oved Harari at [ovedhar@gmail.com] to get a API key
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Starting the project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To get the project up and running, run the following in different Terminals
+
+1. Terminal One: "json-server --watch db.json --port 8000"
+1. Terminal Two: "npm start"
+
+## Authors
+
+Oved Harari
+[ovedhar@gmail.com](https://oved-harari-portfolio.netlify.app)
+
+## Version History
+
+- v1.0
