@@ -75,25 +75,6 @@
       "role": "business",
       "isActive": false,
       "id": 4
-    },
-    {
-      "firstName": "test",
-      "middleName": "test",
-      "lastName": "test",
-      "phone": "3240983250",
-      "email": "test@test.com",
-      "password": "O5o88*2416",
-      "gender": "female",
-      "userImgURL": "",
-      "country": "Israel",
-      "state": "",
-      "city": "Tel Aviv",
-      "street": "Hamagid",
-      "houseNumber": "3",
-      "zipcode": "100456",
-      "role": "business",
-      "isActive": true,
-      "id": 5
     }
   ],
   "cards": [
@@ -296,26 +277,6 @@
       "lat": 55.953252,
       "lng": -3.188267,
       "id": 10
-    },
-    {
-      "title": "test",
-      "subtitle": "test",
-      "description": "The Microsoft new headphones with high quality",
-      "phone": "+972508882416",
-      "email": "ovedhar@gmail.com",
-      "webSite": "sdgfdsafgds",
-      "businessImgURL": "",
-      "businessImgAlt": "",
-      "country": "Israel",
-      "state": "",
-      "city": "Tel Aviv",
-      "street": "Hamagid",
-      "houseNumber": "3",
-      "zipcode": "4485100",
-      "owner": "admin1@test.com",
-      "lat": 32.0670765,
-      "lng": 34.7782912,
-      "id": 11
     }
   ],
   "favorites": [
@@ -518,52 +479,6 @@
           "lng": ""
         }
       ]
-    },
-    {
-      "userId": 5,
-      "cards": [
-        {
-          "title": "Doe's Cafe",
-          "subtitle": "A cozy place for coffee lovers",
-          "description": "Doe's Cafe offers a warm and inviting atmosphere for coffee enthusiasts. We serve a variety of specialty coffee blends and delicious pastries.",
-          "phone": "+1 (555) 123-4567",
-          "email": "info@doescafe.com",
-          "webSite": "https://www.doescafe.com",
-          "businessImgURL": "https://blog.lisi.menu/wp-content/uploads/2023/06/1686658537167-1-791x1024.jpg",
-          "businessImgAlt": "Doe's Cafe",
-          "country": "United States",
-          "state": "California",
-          "city": "Los Angeles",
-          "street": "Main Street",
-          "houseNumber": "123 ",
-          "zipcode": "90001",
-          "owner": "admin1@test.com",
-          "lat": 33.9977319,
-          "lng": -118.4793155,
-          "id": 1
-        },
-        {
-          "title": "Emily's Art Gallery",
-          "subtitle": "Come and see",
-          "description": "Emily's Art Gallery showcases contemporary artworks from talented artists across the globe. We offer a diverse collection of paintings, sculptures, and other artistic creations.",
-          "phone": "+1 (555) 987-6543",
-          "email": "contact@emilysgallery.com",
-          "webSite": "https://www.emilysartgallary.net",
-          "businessImgURL": "https://i.etsystatic.com/iap/e18ac2/3441183774/iap_640x640.3441183774_6t8nu8zv.jpg?version=0",
-          "businessImgAlt": "Emily's Art Gallery",
-          "country": "United States",
-          "state": "New York",
-          "city": "New York City",
-          "street": "Art Avenue",
-          "houseNumber": "456 ",
-          "zipcode": "10001",
-          "owner": "business1@test.com",
-          "lat": 40.7127753,
-          "lng": -74.0059728,
-          "id": 2
-        }
-      ],
-      "id": 5
     }
   ]
 }

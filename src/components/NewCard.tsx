@@ -25,9 +25,6 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
     onSubmit(values: Card) {
       const geocoder = new window.google.maps.Geocoder();
       const place = `${values.country} ${values.city} ${values.street} ${values.houseNumber}`;
-      console.log(place);
-
-      console.log("done");
       geocoder.geocode({ address: place }, (results, status) => {
         if (status === "OK" && results![0]) {
           const location = results![0].geometry.location;
