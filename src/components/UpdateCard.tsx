@@ -12,6 +12,7 @@ interface UpdateCardProps {
   cardId: number;
   cardTitle: string;
 }
+
 const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, cardId, cardTitle }) => {
   let theme = useContext(SiteTheme);
   let [card, setCard] = useState<Card>(
@@ -42,28 +43,35 @@ const UpdateCard: FunctionComponent<UpdateCardProps> = ({ onHide, render, cardId
     }),
     enableReinitialize: true,
     onSubmit(values: Card) {
-      const place = `${values.country} ${values.city} ${values.street} ${values.houseNumber}`;
-      const geocoder = new window.google.maps.Geocoder();
-      geocoder.geocode({ address: place }, (results, status) => {
-        if (status === "OK" && results![0]) {
-          const location = results![0].geometry.location;
-          const lat = (location.lat());
-          const lng = (location.lng());
-          updateCard({ ...values, lat: lat, lng: lng }, cardId)
-            .then((res) => {
-              render();
-              onHide();
-              successMsg(`${cardTitle} Business card was updated successfully`);
-            }).catch((err) =>
-              console.log(err));
-        } else {
-          console.error("Geocode was not successful for the following reason: " + status);
-        }
-      });
-    },
+      try {
+        const geocoder = new google.maps.Geocoder();
+        const place = `${values.country} ${values.city} ${values.street} ${values.houseNumber}`;
+        geocoder.geocode({ address: place }, (results: any, status: any) => {
+          if (status === "OK" && results![0]) {
+            const location = results![0].geometry.location;
+            const lat = (location.lat());
+            const lng = (location.lng());
+            updateCard({ ...values, lat: lat, lng: lng }, cardId)
+              .then((res) => {
+                render();
+                onHide();
+                successMsg(`${cardTitle} Business card was updated successfully`);
+              }).catch((err) =>
+                console.log(err));
+          } else {
+            console.error("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
   });
+
   useEffect(() => {
     getCardById(cardId).then((res) => setCard(res.data)).catch((err) => console.log(err))
+
+
   }, [cardId]);
 
   return (<div className={`container ${theme}`}  >

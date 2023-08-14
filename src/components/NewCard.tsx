@@ -22,25 +22,30 @@ const NewCard: FunctionComponent<NewCardProps> = ({ onHide, render, userInfo }) 
       title: yup.string().required().min(2), subtitle: yup.string().required().min(2), description: yup.string().required().min(20),
       phone: yup.string().required().min(2), email: yup.string().required().email(), webSite: yup.string().min(10), businessImgURL: yup.string().min(2), businessImgAlt: yup.string().min(2), country: yup.string().required().min(2), state: yup.string().min(2), city: yup.string().required().min(2), street: yup.string().required().min(2), houseNumber: yup.string().required().min(1), zipcode: yup.string().min(2)
     }),
+
     onSubmit(values: Card) {
-      const geocoder = new window.google.maps.Geocoder();
-      const place = `${values.country} ${values.city} ${values.street} ${values.houseNumber}`;
-      geocoder.geocode({ address: place }, (results, status) => {
-        if (status === "OK" && results![0]) {
-          const location = results![0].geometry.location;
-          const lat = (location.lat());
-          const lng = (location.lng());
-          addNewCard({ ...values, lat: lat, lng: lng })
-            .then((res) => {
-              render();
-              onHide();
-              successMsg("The Business card was created successfully");
-            })
-            .catch((err) => console.log(err));
-        } else {
-          console.error("Geocode was not successful for the following reason: " + status);
-        }
-      });
+      try {
+        const geocoder = new window.google.maps.Geocoder();
+        const place = `${values.country} ${values.city} ${values.street} ${values.houseNumber}`;
+        geocoder.geocode({ address: place }, (results: any, status: any) => {
+          if (status === "OK" && results![0]) {
+            const location = results![0].geometry.location;
+            const lat = (location.lat());
+            const lng = (location.lng());
+            addNewCard({ ...values, lat: lat, lng: lng })
+              .then((res) => {
+                render();
+                onHide();
+                successMsg("The Business card was created successfully");
+              })
+              .catch((err) => console.log(err));
+          } else {
+            console.error("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   });
 

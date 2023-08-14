@@ -19,6 +19,29 @@ const theme = {
 };
 export let SiteTheme = createContext(theme.light);
 
+declare global {
+  interface Window {
+    google: any;
+    initMaps: () => void;
+    mapsApiLoaded: boolean;
+    mapsApiLoadCallbacks: (() => void)[];
+  }
+}
+
+window.mapsApiLoaded = false;
+window.mapsApiLoadCallbacks = [];
+
+window.initMaps = () => {
+  window.mapsApiLoaded = true;
+  window.mapsApiLoadCallbacks.forEach(callback => callback());
+};
+
+
+
+const googleMapsScript = document.createElement("script");
+googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&callback=initMaps`;
+document.head.appendChild(googleMapsScript);
+
 function App() {
   let [darkMode, setDarkMode] = useState<boolean>(
     JSON.parse(localStorage.getItem("darkMode")!)
